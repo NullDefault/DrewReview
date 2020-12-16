@@ -14,7 +14,7 @@ import { Container } from '../components/Container';
 import { Main } from '../components/Main';
 import { DarkModeSwitch } from '../components/DarkModeSwitch';
 import { Footer } from '../components/Footer';
-import { useAuth } from '../../lib/auth';
+import { useAuth } from "../lib/auth";
 
 const Index = () => {
     const auth = useAuth();
