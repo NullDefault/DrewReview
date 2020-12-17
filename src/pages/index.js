@@ -12,6 +12,7 @@ import {Hero} from '../components/Hero';
 import {Container} from '../components/Container';
 import {Main} from '../components/Main';
 import {DarkModeSwitch} from '../components/DarkModeSwitch';
+import {Logo} from '../components/Logo';
 import {Footer} from '../components/Footer';
 import {useAuth} from "../lib/auth";
 import {SideNav} from "../components/SideNav";
@@ -21,7 +22,7 @@ const Index = () => {
 
     return (
         <Container className="background">
-            <Hero title="Drew Review"/>
+            <Hero title=""/>
             <Main>
                 <SideNav children={!auth?.user ? // if user is already logged in, show sign in button...
                     <Button spacing={3} onClick={(e) => auth.signInWithGithub()}> Sign In </Button> :
@@ -49,6 +50,7 @@ const Index = () => {
             </Main>
 
             <DarkModeSwitch/>
+            <Logo/>
             <Footer>
                 <Text>2020</Text>
             </Footer>

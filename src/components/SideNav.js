@@ -23,7 +23,7 @@ export const SideNav = ({children}) => {
                 finalFocusRef={btnRef}
             >
                 <DrawerOverlay>
-                    <DrawerContent>
+                    <DrawerContent >
                         <DrawerHeader>Currently logged in user: <Code>{auth?.user?.email}</Code></DrawerHeader>
 
                         <DrawerBody>
