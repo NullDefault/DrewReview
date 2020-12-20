@@ -1,11 +1,9 @@
 import {useRouter} from 'next/router';
-import { Document, Page, pdfjs } from 'react-pdf';
+import { Document, Page} from 'react-pdf';
 import {useState} from "react";
 import {Button, Center} from "@chakra-ui/react"
 import {Box, HStack} from "@chakra-ui/layout";
 import {ChevronLeftIcon, ChevronRightIcon} from "@chakra-ui/icons";
-
-pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.min.js`
 
 const Issue = () => {
     const router = useRouter()
