@@ -1,13 +1,13 @@
 import {
     Link as ChakraLink,
-    Text,
+    Select,
     Icon,
     List,
     ListIcon,
     ListItem,
     Button
 } from '@chakra-ui/react';
-import {ExternalLinkIcon} from '@chakra-ui/icons';
+import {ExternalLinkIcon, TriangleDownIcon} from '@chakra-ui/icons';
 import {Hero} from '../components/Hero';
 import {Container} from '../components/Container';
 import {Main} from '../components/Main';
@@ -16,9 +16,12 @@ import {Logo} from '../components/Logo';
 import {Footer} from '../components/Footer';
 import {useAuth} from "../lib/auth";
 import {SideNav} from "../components/SideNav";
+import {useState} from "react";
+import {Text} from "@chakra-ui/layout";
 
 const Index = () => {
     const auth = useAuth();
+    const [chosenYear, setYear] = useState(2020)
 
     return (
         <Container className="background">
@@ -52,7 +55,27 @@ const Index = () => {
             <DarkModeSwitch/>
             <Logo/>
             <Footer>
-                <Text>2020</Text>
+                <Select placeholder="Select year"
+                        icon={<TriangleDownIcon />}
+                        variant="filled"
+                        value={chosenYear}
+                        onChange={(e) => {
+                            setYear(e.target.value);
+                        }}>
+                    <option value={2008}>2008</option>
+                    <option value={2009}>2009</option>
+                    <option value={2010}>2010</option>
+                    <option value={2011}>2011</option>
+                    <option value={2012}>2012</option>
+                    <option value={2013}>2013</option>
+                    <option value={2014}>2014</option>
+                    <option value={2015}>2015</option>
+                    <option value={2016}>2016</option>
+                    <option value={2017}>2017</option>
+                    <option value={2018}>2018</option>
+                    <option value={2019}>2019</option>
+                    <option value={2020}>2020</option>
+                </Select>
             </Footer>
         </Container>
     )
