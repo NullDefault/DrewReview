@@ -4,7 +4,7 @@ import {
     Icon,
     List,
     ListIcon,
-    ListItem,
+    Box,
     Button
 } from '@chakra-ui/react';
 import {ExternalLinkIcon, TriangleDownIcon} from '@chakra-ui/icons';
@@ -17,7 +17,6 @@ import {Footer} from '../components/Footer';
 import {useAuth} from "../lib/auth";
 import {SideNav} from "../components/SideNav";
 import {useState} from "react";
-import {Text} from "@chakra-ui/layout";
 
 const Index = () => {
     const auth = useAuth();
@@ -32,33 +31,28 @@ const Index = () => {
                     <Button spacing={3} onClick={(e) => auth.signOut()}> Sign Out</Button> // otherwise the sign out button
                 }/>
                 <List spacing={3} my={0}>
-                    <ListItem>
-                        <ListIcon icon="check-circle" color="green.500"/>
-                        <ChakraLink
-                            isExternal
-                            href="https://www.drew.edu/library/2019/08/19/drew-publications/"
-                            flexGrow={1}
-                            mr={2}
-                        >
-                            Current website <Icon as={ExternalLinkIcon} mx="2px"/>
-                        </ChakraLink>
-                    </ListItem>
-                    <ListItem>
-                        <ListIcon icon="check-circle" color="green.500"/>
-                        <ChakraLink isExternal href="https://www.drew.edu" flexGrow={1} mr={2}>
-                            Drew University <Icon as={ExternalLinkIcon} mx="2px"/>
-                        </ChakraLink>
-                    </ListItem>
+
                 </List>
             </Main>
 
             <DarkModeSwitch/>
             <Logo/>
             <Footer>
+                <Box>
+                    <ChakraLink
+                        isExternal
+                        href="https://www.drew.edu/library/2019/08/19/drew-publications/"
+                        flexGrow={2}
+                        mr={2}
+                    >
+                        Current website <Icon as={ExternalLinkIcon} mx="2px"/>
+                    </ChakraLink>
+                </Box>
                 <Select placeholder="Select year"
-                        icon={<TriangleDownIcon />}
+                        icon={<TriangleDownIcon/>}
                         variant="filled"
                         value={chosenYear}
+                        mx={8}
                         onChange={(e) => {
                             setYear(e.target.value);
                         }}>
@@ -76,6 +70,16 @@ const Index = () => {
                     <option value={2019}>2019</option>
                     <option value={2020}>2020</option>
                 </Select>
+                <Box>
+                    <ChakraLink
+                        isExternal
+                        href="https://www.drew.edu"
+                        flexGrow={2}
+                        mr={2}>
+
+                        Drew University <Icon as={ExternalLinkIcon} mx="2px"/>
+                    </ChakraLink>
+                </Box>
             </Footer>
         </Container>
     )

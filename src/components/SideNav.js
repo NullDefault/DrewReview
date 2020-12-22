@@ -1,6 +1,6 @@
 import {
     Button, Drawer, DrawerOverlay, DrawerContent,
-    DrawerHeader, DrawerBody, DrawerFooter, Code
+    DrawerHeader, DrawerBody, DrawerFooter, Code, Switch
 } from '@chakra-ui/react'
 import React from 'react';
 import {useDisclosure} from "@chakra-ui/hooks";
@@ -13,8 +13,15 @@ export const SideNav = ({children}) => {
 
     return (
         <>
-            <Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
-                Open
+            <Button
+                ref={btnRef}
+                colorScheme="teal"
+                onClick={onOpen}
+                position="fixed"
+                top="1rem"
+                right="6rem"
+            >
+                Open Auth
             </Button>
             <Drawer
                 isOpen={isOpen}
