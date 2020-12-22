@@ -4,11 +4,11 @@ import {
     Icon,
     List,
     ListIcon,
+    Flex,
     Box,
-    Button
+    Button, Center
 } from '@chakra-ui/react';
-import {ExternalLinkIcon, TriangleDownIcon} from '@chakra-ui/icons';
-import {Hero} from '../components/Hero';
+import {ChevronLeftIcon, ChevronRightIcon, ExternalLinkIcon, TriangleDownIcon} from '@chakra-ui/icons';
 import {Container} from '../components/Container';
 import {Main} from '../components/Main';
 import {DarkModeSwitch} from '../components/DarkModeSwitch';
@@ -16,24 +16,63 @@ import {Logo} from '../components/Logo';
 import {Footer} from '../components/Footer';
 import {useAuth} from "../lib/auth";
 import {SideNav} from "../components/SideNav";
-import {useState} from "react";
-
+import {useLayoutEffect, useState} from "react";
+import {HStack} from "@chakra-ui/layout";
+import {Document, Page} from "react-pdf";
 const Index = () => {
     const auth = useAuth();
-    const [chosenYear, setYear] = useState(2020)
+    const [chosenYear, setYear] = useState(2020);
+    const [width, height] = useWindowSize();
+    const [pageNum, setPage] = useState(3);
+
+
+    // The naming pattern for the pdf files is DrewReview_V{n}.pdf
+    // There is no issue 0, as the first issue is for the year 2008 and is titled DrewReview_V1.pdf
+    // Consequently, to get the right version number, you need to take the query year and subtract 2007 from it
+    const filename = `/DrewReview_V${chosenYear - 2007}.pdf`;
+
+
+    function useWindowSize() {
+        const [size, setSize] = useState([0, 0]);
+        useLayoutEffect(() => {
+            function updateSize() {
+                setSize([window.outerWidth, window.outerHeight]);
+            }
+            window.addEventListener('resize', updateSize);
+            updateSize();
+            return () => window.removeEventListener('resize', updateSize);
+        }, []);
+        return size;
+    }
+
+    const onRightClick = () => {
+        setPage(pageNum + 1);
+    }
+    const onLeftClick = () => {
+        setPage(pageNum - 1);
+    }
+
 
     return (
         <Container className="background">
-            <Hero title=""/>
-            <Main>
-                <SideNav children={!auth?.user ? // if user is already logged in, show sign in button...
-                    <Button spacing={3} onClick={(e) => auth.signInWithGithub()}> Sign In </Button> :
-                    <Button spacing={3} onClick={(e) => auth.signOut()}> Sign Out</Button> // otherwise the sign out button
-                }/>
-                <List spacing={3} my={0}>
-
-                </List>
-            </Main>
+            <SideNav children={!auth?.user ? // if user is already logged in, show sign in button...
+                <Button spacing={3} onClick={(e) => auth.signInWithGithub()}> Sign In </Button> :
+                <Button spacing={3} onClick={(e) => auth.signOut()}> Sign Out</Button> // otherwise the sign out button
+            }/>
+            <HStack spacing="24px" bg="blue.800" justifyContent={'center'} pt={20}>
+                <Button colorScheme="green" onClick={onLeftClick} ml="24px">
+                    <ChevronLeftIcon/>
+                </Button>
+                <Box py="36px">
+                    <Document file={filename}>
+                        <Page pageNumber={pageNum} width={width/2} height={height/2}>
+                        </Page>
+                    </Document>
+                </Box>
+                <Button colorScheme="green" onClick={onRightClick} mr="24px">
+                    <ChevronRightIcon/>
+                </Button>
+            </HStack>
 
             <DarkModeSwitch/>
             <Logo/>
@@ -76,7 +115,6 @@ const Index = () => {
                         href="https://www.drew.edu"
                         flexGrow={2}
                         mr={2}>
-
                         Drew University <Icon as={ExternalLinkIcon} mx="2px"/>
                     </ChakraLink>
                 </Box>
