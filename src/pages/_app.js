@@ -1,8 +1,8 @@
-import {ThemeProvider, CSSReset, ColorModeProvider, theme} from '@chakra-ui/react'
+import {ThemeProvider, CSSReset, ColorModeProvider, theme} from '@chakra-ui/react';
 import {ProvideAuth} from "../lib/auth";
 import {pdfjs} from "react-pdf";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
+pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.min.js`;
 
 function MyApp({Component, pageProps}) {
     return (
@@ -21,4 +21,4 @@ function MyApp({Component, pageProps}) {
     )
 }
 
-export default MyApp
+export default MyApp;
