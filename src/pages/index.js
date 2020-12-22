@@ -1,24 +1,16 @@
-import {
-    Link as ChakraLink,
-    Select,
-    Icon,
-    List,
-    ListIcon,
-    Flex,
-    Box,
-    Button, Center
-} from '@chakra-ui/react';
+import {Link as ChakraLink, Select, Icon, Box, Button} from '@chakra-ui/react';
+import {useLayoutEffect, useState} from "react";
+import {HStack} from "@chakra-ui/layout";
+import {Document, Page} from "react-pdf";
 import {ChevronLeftIcon, ChevronRightIcon, ExternalLinkIcon, TriangleDownIcon} from '@chakra-ui/icons';
 import {Container} from '../components/Container';
-import {Main} from '../components/Main';
 import {DarkModeSwitch} from '../components/DarkModeSwitch';
 import {Logo} from '../components/Logo';
 import {Footer} from '../components/Footer';
 import {useAuth} from "../lib/auth";
 import {SideNav} from "../components/SideNav";
-import {useLayoutEffect, useState} from "react";
-import {HStack} from "@chakra-ui/layout";
-import {Document, Page} from "react-pdf";
+
+
 const Index = () => {
     const auth = useAuth();
     const [chosenYear, setYear] = useState(2020);
@@ -38,6 +30,7 @@ const Index = () => {
             function updateSize() {
                 setSize([window.outerWidth, window.outerHeight]);
             }
+
             window.addEventListener('resize', updateSize);
             updateSize();
             return () => window.removeEventListener('resize', updateSize);
@@ -55,17 +48,20 @@ const Index = () => {
 
     return (
         <Container className="background">
+            <DarkModeSwitch/>
+            <Logo/>
             <SideNav children={!auth?.user ? // if user is already logged in, show sign in button...
-                <Button spacing={3} onClick={(e) => auth.signInWithGithub()}> Sign In </Button> :
-                <Button spacing={3} onClick={(e) => auth.signOut()}> Sign Out</Button> // otherwise the sign out button
+                <Button spacing={3} onClick={() => auth.signInWithGithub()}> Sign In </Button> :
+                <Button spacing={3} onClick={() => auth.signOut()}> Sign Out</Button> // otherwise the sign out button
             }/>
+
             <HStack spacing="24px" bg="blue.800" justifyContent={'center'} pt={20}>
                 <Button colorScheme="green" onClick={onLeftClick} ml="24px">
                     <ChevronLeftIcon/>
                 </Button>
                 <Box py="36px">
                     <Document file={filename}>
-                        <Page pageNumber={pageNum} width={width/2} height={height/2}>
+                        <Page pageNumber={pageNum} width={width / 2} height={height / 2}>
                         </Page>
                     </Document>
                 </Box>
@@ -74,8 +70,6 @@ const Index = () => {
                 </Button>
             </HStack>
 
-            <DarkModeSwitch/>
-            <Logo/>
             <Footer>
                 <Box>
                     <ChakraLink
@@ -123,4 +117,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default Index;

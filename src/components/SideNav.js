@@ -1,7 +1,7 @@
 import {
     Button, Drawer, DrawerOverlay, DrawerContent,
-    DrawerHeader, DrawerBody, DrawerFooter, Code, Switch
-} from '@chakra-ui/react'
+    DrawerHeader, DrawerBody, DrawerFooter, Code
+} from '@chakra-ui/react';
 import React from 'react';
 import {useDisclosure} from "@chakra-ui/hooks";
 import { useAuth } from "../lib/auth";
