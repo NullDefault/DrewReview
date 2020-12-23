@@ -1,16 +1,12 @@
-import { Image, Container } from '@chakra-ui/react';
+import { Image, Box } from '@chakra-ui/react';
 
-export const Logo = () => {
+export const Logo = (props) => {
     return (
-        <Container >
+        <Box {...props}>
             <Image
-                w="64"
                 src="/drew-logo.png"
-                position="fixed"
-                top="1rem"
-                left="1rem"
                 color="green"
             />
-        </Container>
+        </Box>
     )
 }

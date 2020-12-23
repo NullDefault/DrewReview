@@ -17,9 +17,6 @@ export const SideNav = ({children}) => {
                 ref={btnRef}
                 colorScheme="teal"
                 onClick={onOpen}
-                position="fixed"
-                top="1rem"
-                right="6rem"
             >
                 Open Auth
             </Button>
