@@ -1,5 +1,5 @@
-import {HStack} from "@chakra-ui/layout";
-import {Box, Button} from "@chakra-ui/react";
+import {HStack, VStack} from "@chakra-ui/layout";
+import {Box, Text} from "@chakra-ui/react";
 import {Document, Page} from "react-pdf";
 import {useLayoutEffect, useState} from "react";
 import {PageButton} from "./PageButton";
@@ -26,9 +26,10 @@ export const PDFCanvas = ({filename}) => {
 
 
     return (
+        <VStack>
         <HStack spacing="24px" justifyContent={'center'}>
             <PageButton isLeft={true} setPage={setPage} pageNum={pageNum}/>
-            <Box py="36px">
+            <Box py="36px" className="pdf-container">
                 <Document file={filename}>
                     <Page pageNumber={pageNum} width={width / 2} height={height / 2}>
                     </Page>
@@ -36,5 +37,9 @@ export const PDFCanvas = ({filename}) => {
             </Box>
             <PageButton isLeft={false} setPage={setPage} pageNum={pageNum}/>
         </HStack>
+            <Text>
+                {pageNum}
+            </Text>
+        </VStack>
     );
 }
