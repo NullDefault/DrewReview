@@ -1,66 +1,25 @@
-import {Link as ChakraLink, Select, Icon, Box, Button} from '@chakra-ui/react';
-import {useLayoutEffect, useState} from "react";
-import {HStack} from "@chakra-ui/layout";
-import {Document, Page} from "react-pdf";
-import {ChevronLeftIcon, ChevronRightIcon, ExternalLinkIcon, TriangleDownIcon} from '@chakra-ui/icons';
+import {Link as ChakraLink, Select, Icon, Box} from '@chakra-ui/react';
+import {useState} from "react";
+import {ExternalLinkIcon, TriangleDownIcon} from '@chakra-ui/icons';
 import {Container} from '../components/Container';
 import {Footer} from '../components/Footer';
 import {NavBar} from "../components/TopNavBar/index";
+import {PDFCanvas} from "../components/PDFCanvas";
 
 
 const Index = () => {
     const [chosenYear, setYear] = useState(2020);
-    const [width, height] = useWindowSize();
-    const [pageNum, setPage] = useState(3);
-
 
     // The naming pattern for the pdf files is DrewReview_V{n}.pdf
     // There is no issue 0, as the first issue is for the year 2008 and is titled DrewReview_V1.pdf
     // Consequently, to get the right version number, you need to take the query year and subtract 2007 from it
     const filename = `/DrewReview_V${chosenYear - 2007}.pdf`;
 
-
-    function useWindowSize() {
-        const [size, setSize] = useState([0, 0]);
-        useLayoutEffect(() => {
-            function updateSize() {
-                setSize([window.outerWidth, window.outerHeight]);
-            }
-
-            window.addEventListener('resize', updateSize);
-            updateSize();
-            return () => window.removeEventListener('resize', updateSize);
-        }, []);
-        return size;
-    }
-
-    const onRightClick = () => {
-        setPage(pageNum + 1);
-    }
-    const onLeftClick = () => {
-        setPage(pageNum - 1);
-    }
-
-
     return (
         <Box>
             <NavBar/>
             <Container>
-                <HStack spacing="24px" bg="blue.800" justifyContent={'center'}>
-                    <Button colorScheme="green" onClick={onLeftClick} ml="24px">
-                        <ChevronLeftIcon/>
-                    </Button>
-                    <Box py="36px">
-                        <Document file={filename}>
-                            <Page pageNumber={pageNum} width={width / 2} height={height / 2}>
-                            </Page>
-                        </Document>
-                    </Box>
-                    <Button colorScheme="green" onClick={onRightClick} mr="24px">
-                        <ChevronRightIcon/>
-                    </Button>
-                </HStack>
-
+                <PDFCanvas filename={filename}/>
                 <Footer>
                     <Box>
                         <ChakraLink
