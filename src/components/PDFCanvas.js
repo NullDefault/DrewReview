@@ -1,9 +1,8 @@
 import {HStack} from "@chakra-ui/layout";
 import {Box, Button} from "@chakra-ui/react";
-import {ChevronLeftIcon, ChevronRightIcon} from "@chakra-ui/icons";
 import {Document, Page} from "react-pdf";
-import {Container} from "./Container";
 import {useLayoutEffect, useState} from "react";
+import {PageButton} from "./PageButton";
 
 
 function useWindowSize() {
@@ -25,27 +24,17 @@ export const PDFCanvas = ({filename}) => {
     const [width, height] = useWindowSize();
     const [pageNum, setPage] = useState(3);
 
-    const onRightClick = () => {
-        setPage(pageNum + 1);
-    }
-    const onLeftClick = () => {
-        setPage(pageNum - 1);
-    }
 
     return (
         <HStack spacing="24px" justifyContent={'center'}>
-        <Button colorScheme="green" onClick={onLeftClick} ml="24px">
-            <ChevronLeftIcon/>
-        </Button>
-        <Box py="36px">
-            <Document file={filename}>
-                <Page pageNumber={pageNum} width={width / 2} height={height / 2}>
-                </Page>
-            </Document>
-        </Box>
-        <Button colorScheme="green" onClick={onRightClick} mr="24px">
-            <ChevronRightIcon/>
-        </Button>
-    </HStack>
+            <PageButton isLeft={true} setPage={setPage} pageNum={pageNum}/>
+            <Box py="36px">
+                <Document file={filename}>
+                    <Page pageNumber={pageNum} width={width / 2} height={height / 2}>
+                    </Page>
+                </Document>
+            </Box>
+            <PageButton isLeft={false} setPage={setPage} pageNum={pageNum}/>
+        </HStack>
     );
 }

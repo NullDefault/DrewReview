@@ -26,7 +26,6 @@ export const NavBar = (props) => {
         <NavBarContainer {...props}>
             <Logo
                 w="200px"
-                color={["white", "white", "primary.500", "primary.500"]}
             />
             <MenuToggle toggle={toggle} isOpen={isOpen}/>
             <MenuLinks isOpen={isOpen} children={navChildren}/>
