@@ -3,11 +3,24 @@ import {Logo} from "../Logo";
 import {NavBarContainer} from "./NavBarContainer";
 import {MenuToggle} from "./MenuToggle";
 import {MenuLinks} from "./MenuLinks";
+import {SideNav} from "../SideNav";
+import {Button} from "@chakra-ui/react";
+import {useAuth} from "../../lib/auth";
+import {DarkModeSwitch} from "../DarkModeSwitch";
 
 export const NavBar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
-
+    const auth = useAuth();
     const toggle = () => setIsOpen(!isOpen);
+
+    const sideNav = <SideNav children={!auth?.user ? // if user is already logged in, show sign in button...
+        <Button spacing={3} onClick={() => auth.signInWithGithub()}> Sign In </Button> :
+        <Button spacing={3} onClick={() => auth.signOut()}> Sign Out</Button> // otherwise the sign out button
+    }/>
+
+    const darkModeSwitch = <DarkModeSwitch/>
+
+    const navChildren = [sideNav, darkModeSwitch];
 
     return (
         <NavBarContainer {...props}>
@@ -16,7 +29,7 @@ export const NavBar = (props) => {
                 color={["white", "white", "primary.500", "primary.500"]}
             />
             <MenuToggle toggle={toggle} isOpen={isOpen}/>
-            <MenuLinks isOpen={isOpen}/>
+            <MenuLinks isOpen={isOpen} children={navChildren}/>
         </NavBarContainer>
     );
 };
