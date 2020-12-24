@@ -5,7 +5,7 @@ import {Document, Page} from "react-pdf";
 import {ChevronLeftIcon, ChevronRightIcon, ExternalLinkIcon, TriangleDownIcon} from '@chakra-ui/icons';
 import {Container} from '../components/Container';
 import {Footer} from '../components/Footer';
-import {NavBar} from "../components/Header";
+import {NavBar} from "../components/TopNavBar/index";
 
 
 const Index = () => {
