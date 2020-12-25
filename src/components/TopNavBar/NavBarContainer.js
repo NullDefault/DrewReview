@@ -9,8 +9,8 @@ export const NavBarContainer = ({children, ...props}) => {
             wrap="wrap"
             w="100%"
             p={8}
-            bg={["gray.500", "gray.500", "blue.800", "blue.800"]}
-            color={["blue.800", "blue.800", "blue.800", "blue.800"]}
+            bg={"blue.800"}
+            color={"blue.800"}
             {...props}
         >
             {children}

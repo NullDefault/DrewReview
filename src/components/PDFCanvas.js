@@ -1,23 +1,9 @@
 import {HStack, VStack} from "@chakra-ui/layout";
 import {Box, Text} from "@chakra-ui/react";
 import {Document, Page} from "react-pdf";
-import {useLayoutEffect, useState} from "react";
+import {useState} from "react";
 import {PageButton} from "./PageButton";
-
-
-function useWindowSize() {
-    const [size, setSize] = useState([0, 0]);
-    useLayoutEffect(() => {
-        function updateSize() {
-            setSize([window.outerWidth, window.outerHeight]);
-        }
-
-        window.addEventListener('resize', updateSize);
-        updateSize();
-        return () => window.removeEventListener('resize', updateSize);
-    }, []);
-    return size;
-}
+import {useWindowSize} from "../lib/windowSize";
 
 
 export const PDFCanvas = ({filename}) => {
@@ -27,16 +13,16 @@ export const PDFCanvas = ({filename}) => {
 
     return (
         <VStack>
-        <HStack spacing="24px" justifyContent={'center'}>
-            <PageButton isLeft={true} setPage={setPage} pageNum={pageNum}/>
-            <Box py="36px" className="pdf-container">
-                <Document file={filename}>
-                    <Page pageNumber={pageNum} width={width / 2} height={height / 2}>
-                    </Page>
-                </Document>
-            </Box>
-            <PageButton isLeft={false} setPage={setPage} pageNum={pageNum}/>
-        </HStack>
+            <HStack spacing="24px" justifyContent={'center'}>
+                <PageButton isLeft={true} setPage={setPage} pageNum={pageNum}/>
+                <Box py="36px">
+                    <Document file={filename}>
+                        <Page pageNumber={pageNum} width={width / 2} height={height / 2} wrap={true}>
+                        </Page>
+                    </Document>
+                </Box>
+                <PageButton isLeft={false} setPage={setPage} pageNum={pageNum}/>
+            </HStack>
             <Text>
                 {pageNum}
             </Text>

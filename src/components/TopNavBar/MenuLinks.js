@@ -9,7 +9,7 @@ export const MenuLinks = ({isOpen, children}) => {
             <Stack
                 spacing={4}
                 align="center"
-                justify={["center", "space-between", "flex-end", "flex-end"]}
+                justify={"flex-end"}
                 direction={["column", "row", "row", "row"]}
                 pt={[4, 4, 0, 0]}
             >
