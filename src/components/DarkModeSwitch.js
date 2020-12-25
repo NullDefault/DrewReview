@@ -5,9 +5,11 @@ export const DarkModeSwitch = () => {
     const isDark = colorMode === 'dark';
     return (
         <Switch
-            color="green"
+            color="blue"
             isChecked={isDark}
             onChange={toggleColorMode}
-        />
+            size="lg"
+        >
+        </Switch>
     )
 }

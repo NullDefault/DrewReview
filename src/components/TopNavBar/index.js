@@ -7,6 +7,7 @@ import {SideNav} from "../SideNav";
 import {Button} from "@chakra-ui/react";
 import {useAuth} from "../../lib/auth";
 import {DarkModeSwitch} from "../DarkModeSwitch";
+import {MoonIcon, SunIcon} from "@chakra-ui/icons";
 
 export const NavBar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -18,9 +19,12 @@ export const NavBar = (props) => {
         <Button spacing={3} onClick={() => auth.signOut()}> Sign Out</Button> // otherwise the sign out button
     }/>
 
+    const sunIcon = <SunIcon color='white'/>
     const darkModeSwitch = <DarkModeSwitch/>
+    const moonIcon = <MoonIcon color='white'/>
 
-    const navChildren = [sideNav, darkModeSwitch];
+
+    const navChildren = [sunIcon, darkModeSwitch, moonIcon];
 
     return (
         <NavBarContainer {...props}>
