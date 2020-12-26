@@ -24,7 +24,7 @@ export const NavBar = (props) => {
     const moonIcon = <MoonIcon color='white'/>
 
 
-    const navChildren = [sunIcon, darkModeSwitch, moonIcon];
+    const navChildren = [sunIcon, darkModeSwitch, moonIcon, sideNav];
 
     return (
         <NavBarContainer {...props}>
