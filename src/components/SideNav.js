@@ -5,6 +5,7 @@ import {
 import React from 'react';
 import {useDisclosure} from "@chakra-ui/hooks";
 import { useAuth } from "../lib/auth";
+import {LockIcon} from "@chakra-ui/icons";
 
 export const SideNav = ({children}) => {
     const {isOpen, onOpen, onClose} = useDisclosure();
@@ -15,10 +16,10 @@ export const SideNav = ({children}) => {
         <>
             <Button
                 ref={btnRef}
-                colorScheme="teal"
+                colorScheme="primary"
                 onClick={onOpen}
             >
-                Open Auth
+                <LockIcon color="gray.500"/>
             </Button>
             <Drawer
                 isOpen={isOpen}
