@@ -1,12 +1,17 @@
 import {Button} from "@chakra-ui/react";
 import {ChevronLeftIcon, ChevronRightIcon} from "@chakra-ui/icons";
 
-export const PageButton = ({isLeft, setPage, pageNum}) => {
+export const PageButton = ({isLeft, setPage, pageNum, totalPages}) => {
     const onRightClick = () => {
-        setPage(pageNum + 1);
+        if(pageNum !== totalPages){
+            setPage(pageNum + 1);
+        }
+
     }
     const onLeftClick = () => {
-        setPage(pageNum - 1);
+        if(pageNum !== 1){
+            setPage(pageNum - 1);
+        }
     }
 
     const icon = isLeft ? <ChevronLeftIcon/> : <ChevronRightIcon/>;
