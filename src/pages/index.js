@@ -7,7 +7,7 @@ import {NavBar} from "../components/TopNavBar/index";
 import {PDFCanvas} from "../components/PDFCanvas";
 import {SideNav} from "../components/SideNav";
 import {useAuth} from "../lib/auth";
-import {HStack, VStack} from "@chakra-ui/layout";
+import {HStack, StackDivider, VStack} from "@chakra-ui/layout";
 
 
 const Index = () => {
@@ -31,13 +31,12 @@ const Index = () => {
                 <PDFCanvas filename={filename}/>
                 <Footer>
                     <VStack spacing="24px">
-                        <HStack>
-                            <Box>
+                        <HStack spacing="64px">
+                            <Box w="100%">
                                 <ChakraLink
                                     isExternal
                                     href="https://www.drew.edu/library/2019/08/19/drew-publications/"
                                     flexGrow={2}
-                                    mr={2}
                                 >
                                     Current website <Icon as={ExternalLinkIcon} mx="2px"/>
                                 </ChakraLink>
@@ -46,7 +45,6 @@ const Index = () => {
                                     icon={<TriangleDownIcon/>}
                                     variant="filled"
                                     value={chosenYear}
-                                    mx={8}
                                     onChange={(e) => {
                                         setYear(e.target.value);
                                     }}>
@@ -64,21 +62,21 @@ const Index = () => {
                                 <option value={2019}>2019</option>
                                 <option value={2020}>2020</option>
                             </Select>
-                            <Box>
+                            <Box w="100%">
                                 <ChakraLink
                                     isExternal
                                     href="https://www.drew.edu"
                                     flexGrow={2}
-                                    mr={2}>
+                                    >
                                     Drew University <Icon as={ExternalLinkIcon} mx="2px"/>
                                 </ChakraLink>
                             </Box>
                         </HStack>
+                        <StackDivider/>
                         <HStack>
                             {sideNav}
                         </HStack>
                     </VStack>
-
                 </Footer>
             </Container>
         </Box>

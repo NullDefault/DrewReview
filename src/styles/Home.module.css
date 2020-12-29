@@ -70,3 +70,7 @@
     flex-direction: column;
   }
 }
+
+.react-pdf__Page__annotations{
+  height: 0;
+}
