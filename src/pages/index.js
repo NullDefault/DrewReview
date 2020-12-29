@@ -1,7 +1,7 @@
 import {Link as ChakraLink, Select, Icon, Box, Button} from '@chakra-ui/react';
 import {useState} from "react";
 import {ExternalLinkIcon, TriangleDownIcon} from '@chakra-ui/icons';
-import {Container} from '../components/Container';
+import {BackgroundContainer} from '../components/BackgroundContainer';
 import {Footer} from '../components/Footer';
 import {NavBar} from "../components/TopNavBar/index";
 import {PDFCanvas} from "../components/PDFCanvas";
@@ -27,7 +27,7 @@ const Index = () => {
     return (
         <Box>
             <NavBar/>
-            <Container>
+            <BackgroundContainer>
                 <PDFCanvas filename={filename}/>
                 <Footer>
                     <VStack spacing="24px">
@@ -78,7 +78,7 @@ const Index = () => {
                         </HStack>
                     </VStack>
                 </Footer>
-            </Container>
+            </BackgroundContainer>
         </Box>
     )
 }

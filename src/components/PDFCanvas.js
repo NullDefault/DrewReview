@@ -1,6 +1,6 @@
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 import {HStack, VStack} from "@chakra-ui/layout";
-import {Box, Text, Progress} from "@chakra-ui/react";
+import {Box, Progress, NumberInput, NumberInputField, NumberInputStepper, NumberDecrementStepper, NumberIncrementStepper} from "@chakra-ui/react";
 import {Document, Page} from "react-pdf";
 import {useState} from "react";
 import {PageButton} from "./PageButton";
@@ -8,13 +8,25 @@ import {useWindowSize} from "../lib/windowSize";
 
 export const PDFCanvas = ({filename}) => {
     const [width, height] = useWindowSize();
-    const [pageNum, setPage] = useState(37);
+    const [pageNum, setPage] = useState(2);
     const [totalPages, setTotalPages] = useState(0);
     const progress = pageNum / (totalPages / 100);
 
     const onDocumentLoadSuccess = ({numPages}) => {
         setTotalPages(numPages);
     };
+
+    const pageDecrement = (pageNum <= 0) ? null : <NumberDecrementStepper/>
+    const pageIncrement = (pageNum >= totalPages) ? null : <NumberIncrementStepper/>
+
+    const numberInput = <NumberInput value={pageNum}
+                                     allowMouseWheel={true}
+                                     onChange={(value)=>{setPage(parseInt(value))}}>
+        <NumberInputField/>
+        <NumberInputStepper>
+            {pageIncrement} {pageDecrement}
+        </NumberInputStepper>
+    </NumberInput>
 
     return (
         <VStack>
@@ -31,9 +43,9 @@ export const PDFCanvas = ({filename}) => {
             <Box w={width / 2} h="100%" pb="36px">
                 <Progress value={progress}/>
             </Box>
-            <Text>
-                {pageNum} / {totalPages}
-            </Text>
+            <HStack>
+                {numberInput}
+            </HStack>
         </VStack>
     );
 }
