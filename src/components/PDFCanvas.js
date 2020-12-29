@@ -16,12 +16,17 @@ export const PDFCanvas = ({filename}) => {
         setTotalPages(numPages);
     };
 
-    const pageDecrement = (pageNum <= 0) ? null : <NumberDecrementStepper/>
-    const pageIncrement = (pageNum >= totalPages) ? null : <NumberIncrementStepper/>
+    const pageDecrement = (pageNum <= 0 ) ? <div/> : <NumberDecrementStepper/>
+    const pageIncrement = (pageNum >= totalPages ) ? <div/> : <NumberIncrementStepper/>
 
-    const numberInput = <NumberInput value={pageNum}
+    const pageNumberInput = <NumberInput value={pageNum}
                                      allowMouseWheel={true}
-                                     onChange={(value)=>{setPage(parseInt(value))}}>
+                                     onChange={(value)=>{
+                                         value = parseInt(value);
+                                         if(value !== 0 && value <= totalPages){
+                                             setPage(value);
+                                         }
+                                     }}>
         <NumberInputField/>
         <NumberInputStepper>
             {pageIncrement} {pageDecrement}
@@ -31,20 +36,20 @@ export const PDFCanvas = ({filename}) => {
     return (
         <VStack>
             <HStack spacing="24px" justifyContent={'center'}>
-                <PageButton isLeft={true} setPage={setPage} pageNum={pageNum}/>
+                <PageButton isLeft={true} setPage={setPage} pageNum={pageNum} totalPages={totalPages}/>
                 <Box pt="36px">
                     <Document file={filename} onLoadSuccess={onDocumentLoadSuccess}>
                         <Page pageNumber={pageNum} width={width / 2} height={height / 2} wrap={true}>
                         </Page>
                     </Document>
                 </Box>
-                <PageButton isLeft={false} setPage={setPage} pageNum={pageNum}/>
+                <PageButton isLeft={false} setPage={setPage} pageNum={pageNum} totalPages={totalPages}/>
             </HStack>
             <Box w={width / 2} h="100%" pb="36px">
                 <Progress value={progress}/>
             </Box>
             <HStack>
-                {numberInput}
+                {pageNumberInput}
             </HStack>
         </VStack>
     );
