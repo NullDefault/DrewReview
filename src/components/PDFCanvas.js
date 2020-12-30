@@ -16,67 +16,64 @@ import {useWindowSize} from "../lib/windowSize";
 import {BackgroundContainer} from "./BackgroundContainer";
 
 export const PDFCanvas = ({filename}) => {
-    const [width, height] = useWindowSize();
-    const [pageDimensions, updatePageDimensions] = useState({width: 0, height: 0})
-    const [pageNum, setPage] = useState(0);
+    const windowSize = useWindowSize();
+    const [pdfPageDimensions, updatePdfPageDimensions] = useState({width: 0, height: 0})
+
+    const [pageNumber, setPage] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
-    const progress = pageNum / (totalPages / 100);
+
+    const progress = pageNumber / (totalPages / 100);
+
+    const resizeCanvas = () => {
+        updatePdfPageDimensions({width: pdfPageDimensions.width, height: windowSize.height * .65});
+    }
 
     const onDocumentLoadSuccess = ({numPages}) => {
         setTotalPages(numPages);
-        resizeCanvas();
     };
 
-    const pageDecrement = (pageNum <= 0) ? <div/> : <NumberDecrementStepper/>
-    const pageIncrement = (pageNum >= totalPages) ? <div/> : <NumberIncrementStepper/>
-
-    const resizeCanvas = () => {
-        updatePageDimensions({width: width * .75, height: height * .75});
+    const handleRenderSuccess = (pageData) => {
+        resizeCanvas();
+        const pgWidth = pageData.width;
+        updatePdfPageDimensions({width: pgWidth, height: pdfPageDimensions.height})
     }
+
+    const pageDecrement = (pageNumber <= 0) ? <div/> : <NumberDecrementStepper/>
+    const pageIncrement = (pageNumber >= totalPages) ? <div/> : <NumberIncrementStepper/>
 
     const setNewPage = (value) => {
         value = parseInt(value);
-        if (Math.abs(value - pageNum) === 1) {
-            if (value < pageNum) {
+        if (Math.abs(value - pageNumber) === 1) {
+            if (value < pageNumber) {
                 turnLeftPage();
             } else {
                 turnRightPage();
             }
         } else {
             setPage(value);
-            resizeCanvas();
         }
     }
 
     const turnLeftPage = () => {
-        if (pageNum - 1 !== 0) {
-            setPage(pageNum - 1);
+        if (pageNumber - 1 !== 0) {
+            setPage(pageNumber - 1);
         }
-        resizeCanvas();
     }
 
     const turnRightPage = () => {
-        if (pageNum + 1 <= totalPages) {
-            setPage(pageNum + 1);
+        if (pageNumber + 1 <= totalPages) {
+            setPage(pageNumber + 1);
         }
-        resizeCanvas();
     }
 
-    const pageNumberInput = <NumberInput value={pageNum} allowMouseWheel={true} onChange={setNewPage}>
+    const pageNumberInput = <NumberInput value={pageNumber} allowMouseWheel={true} onChange={setNewPage}>
         <NumberInputField/>
         <NumberInputStepper>
             {pageIncrement} {pageDecrement}
         </NumberInputStepper>
     </NumberInput>
 
-    let loadingBg = <BackgroundContainer width={pageDimensions.width} height={pageDimensions.height} wrap={true}/>
-
-    const pageRender = <Page
-        pageNumber={pageNum}
-        height={pageDimensions.height}
-        loading={loadingBg}
-        wrap={true}/>
-
+    let loadingBg = <BackgroundContainer width={pdfPageDimensions.width} height={pdfPageDimensions.height} wrap={true}/>
 
     return (
         <VStack>
@@ -87,12 +84,17 @@ export const PDFCanvas = ({filename}) => {
                               onSourceSuccess={() => {
                                   setPage(2)
                               }}>
-                        {pageRender}
+                        <Page
+                            pageNumber={pageNumber}
+                            height={pdfPageDimensions.height}
+                            loading={loadingBg}
+                            onRenderSuccess={handleRenderSuccess}
+                            wrap={true}/>
                     </Document>
                 </Box>
                 <PageButton isLeft={false} setPage={turnRightPage}/>
             </HStack>
-            <Box w={width / 2} h="100%" pb="36px">
+            <Box w={pdfPageDimensions.width} h="100%" pb="36px">
                 <Progress value={progress}/>
             </Box>
             <HStack>
