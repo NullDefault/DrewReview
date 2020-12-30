@@ -10,7 +10,7 @@ import {
     NumberIncrementStepper
 } from "@chakra-ui/react";
 import {Document, Page} from "react-pdf";
-import {useState} from "react";
+import {useState, useEffect, useLayoutEffect} from "react";
 import {PageButton} from "./PageButton";
 import {useWindowSize} from "../lib/windowSize";
 import {BackgroundContainer} from "./BackgroundContainer";
@@ -24,9 +24,15 @@ export const PDFCanvas = ({filename}) => {
 
     const progress = pageNumber / (totalPages / 100);
 
+
     const resizeCanvas = () => {
         updatePdfPageDimensions({width: pdfPageDimensions.width, height: windowSize.height * .65});
     }
+
+    useLayoutEffect(() => {
+        window.addEventListener('resize', resizeCanvas);
+        return () => window.removeEventListener('resize', resizeCanvas);
+    }, []);
 
     const onDocumentLoadSuccess = ({numPages}) => {
         setTotalPages(numPages);
