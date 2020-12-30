@@ -21,8 +21,8 @@ export const PDFCanvas = ({filename}) => {
     const windowSize = useWindowSize();
     const [pdfPageDimensions, updatePdfPageDimensions] = useState({width: 0, height: 0})
 
-    const [pageNumber, setPage] = useState(0);
-    const [totalPages, setTotalPages] = useState(0);
+    const [pageNumber, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
 
     const progress = pageNumber / (totalPages / 100);
 
@@ -88,7 +88,7 @@ export const PDFCanvas = ({filename}) => {
                 <Box pt="36px">
                     <Document file={filename} onLoadSuccess={onDocumentLoadSuccess} loading={loadingBg}
                               onSourceSuccess={() => {
-                                  setPage(2)
+                                  setPage(1)
                               }}>
                         <Page
                             pageNumber={pageNumber}
