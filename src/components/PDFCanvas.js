@@ -4,6 +4,8 @@ import {
     HStack,
     VStack,
     Text,
+    Center,
+    CircularProgress,
     Progress,
     NumberInput,
     NumberInputField,
@@ -38,6 +40,7 @@ export const PDFCanvas = ({filename}) => {
 
     const onDocumentLoadSuccess = ({numPages}) => {
         setTotalPages(numPages);
+        setPage(1);
     };
 
     const handleRenderSuccess = (pageData) => {
@@ -79,17 +82,18 @@ export const PDFCanvas = ({filename}) => {
     </HStack>
 
 
-    let loadingBg = <BackgroundContainer width={pdfPageDimensions.width} height={pdfPageDimensions.height} wrap={true}/>
+    let loadingBg = <BackgroundContainer >
+        <Center width={pdfPageDimensions.width} height={pdfPageDimensions.height}>
+            <CircularProgress isIndeterminate color="blue.300"  size={100}/>
+        </Center>
+    </BackgroundContainer>
 
     return (
         <VStack>
             <HStack spacing="24px" justifyContent={'center'}>
                 <PageButton isLeft={true} setPage={turnLeftPage}/>
                 <Box pt="36px">
-                    <Document file={filename} onLoadSuccess={onDocumentLoadSuccess} loading={loadingBg}
-                              onSourceSuccess={() => {
-                                  setPage(1)
-                              }}>
+                    <Document file={filename} onLoadSuccess={onDocumentLoadSuccess} loading={loadingBg}>
                         <Page
                             pageNumber={pageNumber}
                             height={pdfPageDimensions.height}
