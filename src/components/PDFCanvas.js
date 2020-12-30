@@ -1,16 +1,18 @@
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
-import {HStack, VStack} from "@chakra-ui/layout";
 import {
     Box,
+    HStack,
+    VStack,
+    Text,
     Progress,
     NumberInput,
     NumberInputField,
     NumberInputStepper,
     NumberDecrementStepper,
-    NumberIncrementStepper
+    NumberIncrementStepper,
 } from "@chakra-ui/react";
 import {Document, Page} from "react-pdf";
-import {useState, useEffect, useLayoutEffect} from "react";
+import {useState, useLayoutEffect} from "react";
 import {PageButton} from "./PageButton";
 import {useWindowSize} from "../lib/windowSize";
 import {BackgroundContainer} from "./BackgroundContainer";
@@ -44,20 +46,12 @@ export const PDFCanvas = ({filename}) => {
         updatePdfPageDimensions({width: pgWidth, height: pdfPageDimensions.height})
     }
 
-    const pageDecrement = (pageNumber <= 0) ? <div/> : <NumberDecrementStepper/>
+    const pageDecrement = (pageNumber <= 1) ? <div/> : <NumberDecrementStepper/>
     const pageIncrement = (pageNumber >= totalPages) ? <div/> : <NumberIncrementStepper/>
 
     const setNewPage = (value) => {
         value = parseInt(value);
-        if (Math.abs(value - pageNumber) === 1) {
-            if (value < pageNumber) {
-                turnLeftPage();
-            } else {
-                turnRightPage();
-            }
-        } else {
-            setPage(value);
-        }
+        setPage(value);
     }
 
     const turnLeftPage = () => {
@@ -71,13 +65,19 @@ export const PDFCanvas = ({filename}) => {
             setPage(pageNumber + 1);
         }
     }
+    const pageNumberInput = <HStack>
+        <NumberInput value={pageNumber} allowMouseWheel={true}
+                     onChange={setNewPage} min={1} max={totalPages}>
+                <NumberInputField/>
+                <NumberInputStepper>
+                    {pageIncrement} {pageDecrement}
+                </NumberInputStepper>
+        </NumberInput>
+        <Text>
+            / {totalPages}
+        </Text>
+    </HStack>
 
-    const pageNumberInput = <NumberInput value={pageNumber} allowMouseWheel={true} onChange={setNewPage}>
-        <NumberInputField/>
-        <NumberInputStepper>
-            {pageIncrement} {pageDecrement}
-        </NumberInputStepper>
-    </NumberInput>
 
     let loadingBg = <BackgroundContainer width={pdfPageDimensions.width} height={pdfPageDimensions.height} wrap={true}/>
 
