@@ -40,13 +40,12 @@ export const PDFCanvas = ({filename}) => {
 
     const onDocumentLoadSuccess = ({numPages}) => {
         setTotalPages(numPages);
-        setPage(1);
     };
 
     const handleRenderSuccess = (pageData) => {
-        resizeCanvas();
         const pgWidth = pageData.width;
-        updatePdfPageDimensions({width: pgWidth, height: pdfPageDimensions.height})
+        updatePdfPageDimensions({width: pgWidth, height: pdfPageDimensions.height});
+        resizeCanvas();
     }
 
     const pageDecrement = (pageNumber <= 1) ? <div/> : <NumberDecrementStepper/>
