@@ -16,7 +16,7 @@ import {PageNumberInput} from "./PageNumberInput";
 
 export const PDFCanvas = ({filename}) => {
     const windowSize = useWindowSize();
-    const [pdfPageDimensions, updatePdfPageDimensions] = useState({width: 0, height: 0})
+    const [pdfPageDimensions, updatePdfPageDimensions] = useState({width: 400, height: 600})
     const [pageData, updatePageData] = useState({pageNumber: 1, totalPages: 1})
     const progress = pageData.pageNumber / (pageData.totalPages / 100);
 
