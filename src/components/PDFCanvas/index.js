@@ -3,32 +3,24 @@ import {
     Box,
     HStack,
     VStack,
-    Text,
     Center,
     CircularProgress,
     Progress,
-    NumberInput,
-    NumberInputField,
-    NumberInputStepper,
-    NumberDecrementStepper,
-    NumberIncrementStepper,
 } from "@chakra-ui/react";
 import {Document, Page} from "react-pdf";
 import {useState, useLayoutEffect} from "react";
 import {PageButton} from "./PageButton";
-import {useWindowSize} from "../lib/windowSize";
-import {BackgroundContainer} from "./BackgroundContainer";
+import {useWindowSize} from "../../lib/windowSize";
+import {BackgroundContainer} from "../BackgroundContainer";
+import {PageNumberInput} from "./PageNumberInput";
 
 export const PDFCanvas = ({filename}) => {
     const windowSize = useWindowSize();
     const [pdfPageDimensions, updatePdfPageDimensions] = useState({width: 0, height: 0})
+    const [pageData, updatePageData] = useState({pageNumber: 1, totalPages: 1})
+    const progress = pageData.pageNumber / (pageData.totalPages / 100);
 
-    const [pageNumber, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
-
-    const progress = pageNumber / (totalPages / 100);
-
-
+// ~~~ Canvas resizing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     const resizeCanvas = () => {
         updatePdfPageDimensions({width: pdfPageDimensions.width, height: windowSize.height * .65});
     }
@@ -39,51 +31,34 @@ export const PDFCanvas = ({filename}) => {
     }, []);
 
     const onDocumentLoadSuccess = ({numPages}) => {
-        setTotalPages(numPages);
+        updatePageData({pageNumber: 1, totalPages: numPages});
+        resizeCanvas();
     };
 
-    const handleRenderSuccess = (pageData) => {
-        const pgWidth = pageData.width;
-        updatePdfPageDimensions({width: pgWidth, height: pdfPageDimensions.height});
-        resizeCanvas();
-    }
-
-    const pageDecrement = (pageNumber <= 1) ? <div/> : <NumberDecrementStepper/>
-    const pageIncrement = (pageNumber >= totalPages) ? <div/> : <NumberIncrementStepper/>
-
+// ~~~ Functions related to changing pages ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     const setNewPage = (value) => {
         value = parseInt(value);
-        setPage(value);
+        updatePageData({pageNumber: value, totalPages: pageData.totalPages});
     }
 
     const turnLeftPage = () => {
-        if (pageNumber - 1 !== 0) {
-            setPage(pageNumber - 1);
+        let leftPage = pageData.pageNumber - 1;
+        if (leftPage !== 0) {
+            updatePageData({pageNumber: leftPage, totalPages: pageData.totalPages});
         }
     }
 
     const turnRightPage = () => {
-        if (pageNumber + 1 <= totalPages) {
-            setPage(pageNumber + 1);
+        let rightPage = pageData.pageNumber + 1;
+        if (rightPage <= pageData.totalPages) {
+            updatePageData({pageNumber: rightPage, totalPages: pageData.totalPages});
         }
     }
-    const pageNumberInput = <HStack>
-        <NumberInput value={pageNumber} allowMouseWheel={true}
-                     onChange={setNewPage} min={1} max={totalPages}>
-                <NumberInputField/>
-                <NumberInputStepper>
-                    {pageIncrement} {pageDecrement}
-                </NumberInputStepper>
-        </NumberInput>
-        <Text>
-            / {totalPages}
-        </Text>
-    </HStack>
 
 
-    let loadingBg = <BackgroundContainer >
+    let loadingBg = <BackgroundContainer>
         <Center width={pdfPageDimensions.width} height={pdfPageDimensions.height}>
-            <CircularProgress isIndeterminate color="blue.300"  size={100}/>
+            <CircularProgress isIndeterminate color="blue.300" size={100}/>
         </Center>
     </BackgroundContainer>
 
@@ -94,10 +69,12 @@ export const PDFCanvas = ({filename}) => {
                 <Box pt="36px">
                     <Document file={filename} onLoadSuccess={onDocumentLoadSuccess} loading={loadingBg}>
                         <Page
-                            pageNumber={pageNumber}
+                            pageNumber={pageData.pageNumber}
                             height={pdfPageDimensions.height}
                             loading={loadingBg}
-                            onRenderSuccess={handleRenderSuccess}
+                            onRenderSuccess={(pageData) => {
+                                updatePdfPageDimensions({width: pageData.width, height: pdfPageDimensions.height})
+                            }}
                             wrap={true}/>
                     </Document>
                 </Box>
@@ -107,7 +84,7 @@ export const PDFCanvas = ({filename}) => {
                 <Progress value={progress}/>
             </Box>
             <HStack>
-                {pageNumberInput}
+                <PageNumberInput pageData={pageData} setNewPage={setNewPage}/>
             </HStack>
         </VStack>
     );

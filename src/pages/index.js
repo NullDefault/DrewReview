@@ -4,7 +4,7 @@ import {ExternalLinkIcon, TriangleDownIcon} from '@chakra-ui/icons';
 import {BackgroundContainer} from '../components/BackgroundContainer';
 import {Footer} from '../components/Footer';
 import {NavBar} from "../components/TopNavBar/index";
-import {PDFCanvas} from "../components/PDFCanvas";
+import {PDFCanvas} from "../components/PDFCanvas/index";
 import {SideNav} from "../components/SideNav";
 import {useAuth} from "../lib/auth";
 import {HStack, StackDivider, VStack} from "@chakra-ui/layout";
