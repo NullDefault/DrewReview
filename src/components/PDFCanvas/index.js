@@ -22,7 +22,12 @@ export const PDFCanvas = ({filename}) => {
 
 // ~~~ Canvas resizing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     const resizeCanvas = () => {
-        updatePdfPageDimensions({width: pdfPageDimensions.width, height: windowSize.height * .65});
+        if(windowSize.width > windowSize.height){
+            updatePdfPageDimensions({width: pdfPageDimensions.width, height: windowSize.height * .65});
+        }else{
+            updatePdfPageDimensions({width: pdfPageDimensions.width, height: windowSize.width * .65});
+        }
+
     }
 
     useLayoutEffect(() => {
@@ -62,10 +67,13 @@ export const PDFCanvas = ({filename}) => {
         </Center>
     </BackgroundContainer>
 
+    const leftButton = windowSize.width > windowSize.height ? <PageButton isLeft={true} setPage={turnLeftPage}/> : <div/>
+    const rightButton = windowSize.width > windowSize.height ? <PageButton isLeft={false} setPage={turnRightPage}/> : <div/>
+
     return (
         <VStack>
             <HStack spacing="24px" justifyContent={'center'}>
-                <PageButton isLeft={true} setPage={turnLeftPage}/>
+                {leftButton}
                 <Box pt="36px">
                     <Document file={filename} onLoadSuccess={onDocumentLoadSuccess} loading={loadingBg}>
                         <Page
@@ -78,7 +86,7 @@ export const PDFCanvas = ({filename}) => {
                             wrap={true}/>
                     </Document>
                 </Box>
-                <PageButton isLeft={false} setPage={turnRightPage}/>
+                {rightButton}
             </HStack>
             <Box w={pdfPageDimensions.width} h="100%" pb="36px">
                 <Progress value={progress}/>
