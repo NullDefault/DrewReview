@@ -28,41 +28,33 @@ const Index = () => {
         <Box>
             <NavBar/>
             <BackgroundContainer>
+                <Select placeholder="Select year"
+                        icon={<TriangleDownIcon/>}
+                        variant="filled"
+                        width="1/2"
+                        m="12px"
+                        value={chosenYear}
+                        onChange={(e) => {
+                            setYear(e.target.value);
+                        }}>
+                    <option value={2008}>2008</option>
+                    <option value={2009}>2009</option>
+                    <option value={2010}>2010</option>
+                    <option value={2011}>2011</option>
+                    <option value={2012}>2012</option>
+                    <option value={2013}>2013</option>
+                    <option value={2014}>2014</option>
+                    <option value={2015}>2015</option>
+                    <option value={2016}>2016</option>
+                    <option value={2017}>2017</option>
+                    <option value={2018}>2018</option>
+                    <option value={2019}>2019</option>
+                    <option value={2020}>2020</option>
+                </Select>
                 <PDFCanvas filename={filename}/>
                 <Footer>
                     <VStack spacing="24px">
-                        <HStack spacing="64px">
-                            <Box w="100%">
-                                <ChakraLink
-                                    isExternal
-                                    href="https://www.drew.edu/library/2019/08/19/drew-publications/"
-                                    flexGrow={2}
-                                >
-                                    Current website <Icon as={ExternalLinkIcon} mx="2px"/>
-                                </ChakraLink>
-                            </Box>
-                            <Select placeholder="Select year"
-                                    icon={<TriangleDownIcon/>}
-                                    variant="filled"
-                                    value={chosenYear}
-                                    onChange={(e) => {
-                                        setYear(e.target.value);
-                                    }}>
-                                <option value={2008}>2008</option>
-                                <option value={2009}>2009</option>
-                                <option value={2010}>2010</option>
-                                <option value={2011}>2011</option>
-                                <option value={2012}>2012</option>
-                                <option value={2013}>2013</option>
-                                <option value={2014}>2014</option>
-                                <option value={2015}>2015</option>
-                                <option value={2016}>2016</option>
-                                <option value={2017}>2017</option>
-                                <option value={2018}>2018</option>
-                                <option value={2019}>2019</option>
-                                <option value={2020}>2020</option>
-                            </Select>
-                            <Box w="100%">
+                            <Box>
                                 <ChakraLink
                                     isExternal
                                     href="https://www.drew.edu"
@@ -71,8 +63,6 @@ const Index = () => {
                                     Drew University <Icon as={ExternalLinkIcon} mx="2px"/>
                                 </ChakraLink>
                             </Box>
-                        </HStack>
-                        <StackDivider/>
                         <HStack>
                             {sideNav}
                         </HStack>

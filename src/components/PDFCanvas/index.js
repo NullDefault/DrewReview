@@ -73,23 +73,19 @@ export const PDFCanvas = ({filename}) => {
         <VStack>
             <HStack spacing="24px" justifyContent={'center'}>
                 {leftButton}
-                <Box pt="36px">
-                    <Document m="24px" file={filename} onLoadSuccess={onDocumentLoadSuccess} loading={loadingBg}>
+                <Box>
+                    <Document file={filename} onLoadSuccess={onDocumentLoadSuccess} loading={loadingBg}>
                         <Page
                             pageNumber={pageData.pageNumber}
                             height={pdfPageDimensions.height}
                             loading={loadingBg}
                             wrap={true}/>
+                        <Progress value={progress}/>
                     </Document>
                 </Box>
                 {rightButton}
             </HStack>
-            <Box w={pdfPageDimensions.width} h="100%" pb="36px">
-                <Progress value={progress}/>
-            </Box>
-            <HStack>
-                <PageNumberInput pageData={pageData} setNewPage={setNewPage}/>
-            </HStack>
+            <PageNumberInput pageData={pageData} setNewPage={setNewPage}/>
         </VStack>
     );
 }
