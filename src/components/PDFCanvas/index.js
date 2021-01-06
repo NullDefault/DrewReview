@@ -25,9 +25,8 @@ export const PDFCanvas = ({filename}) => {
         if(windowSize.width > windowSize.height){
             updatePdfPageDimensions({width: pdfPageDimensions.width, height: windowSize.height * .65});
         }else{
-            updatePdfPageDimensions({width: pdfPageDimensions.width, height: windowSize.width * .65});
+            updatePdfPageDimensions({width: pdfPageDimensions.width, height: windowSize.height * .85});
         }
-
     }
 
     useLayoutEffect(() => {
@@ -75,14 +74,11 @@ export const PDFCanvas = ({filename}) => {
             <HStack spacing="24px" justifyContent={'center'}>
                 {leftButton}
                 <Box pt="36px">
-                    <Document file={filename} onLoadSuccess={onDocumentLoadSuccess} loading={loadingBg}>
+                    <Document m="24px" file={filename} onLoadSuccess={onDocumentLoadSuccess} loading={loadingBg}>
                         <Page
                             pageNumber={pageData.pageNumber}
                             height={pdfPageDimensions.height}
                             loading={loadingBg}
-                            onRenderSuccess={(pageData) => {
-                                updatePdfPageDimensions({width: pageData.width, height: pdfPageDimensions.height})
-                            }}
                             wrap={true}/>
                     </Document>
                 </Box>
