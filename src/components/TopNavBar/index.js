@@ -9,7 +9,7 @@ export const NavBar = ({children}) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
 
-    const darkModeSwitch = <DarkModeSwitch/>
+    const darkModeSwitch = <DarkModeSwitch key="dms"/>
 
     const navChildren = [children, darkModeSwitch];
 

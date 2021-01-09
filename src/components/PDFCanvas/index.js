@@ -54,10 +54,9 @@ export const PDFCanvas = ({filename}) => {
     const rightButton = windowSize.width > windowSize.height ? <PageButton isLeft={false} setPage={turnRightPage}/> : <div/>
 
     const onPageLoad = (pageData) => {
-        console.log(pageData.width);
         if(pageData.width >= windowSize.width){
             let overflow = windowSize.width / pageData.width;
-            updatePageScale(overflow-0.05);
+            updatePageScale(overflow.toFixed(1) - 0.05);
         }
     }
 
