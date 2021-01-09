@@ -8,7 +8,7 @@ import {
     Progress,
 } from "@chakra-ui/react";
 import {Document, Page} from "react-pdf";
-import {useState, useLayoutEffect} from "react";
+import {useState} from "react";
 import {PageButton} from "./PageButton";
 import {useWindowSize} from "../../lib/windowSize";
 import {BackgroundContainer} from "../BackgroundContainer";
@@ -16,27 +16,11 @@ import {PageNumberInput} from "./PageNumberInput";
 
 export const PDFCanvas = ({filename}) => {
     const windowSize = useWindowSize();
-    const [pdfPageDimensions, updatePdfPageDimensions] = useState({width: 400, height: 600})
     const [pageData, updatePageData] = useState({pageNumber: 1, totalPages: 1})
     const progress = pageData.pageNumber / (pageData.totalPages / 100);
 
-// ~~~ Canvas resizing ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    const resizeCanvas = () => {
-        if(windowSize.width > windowSize.height){
-            updatePdfPageDimensions({width: pdfPageDimensions.width, height: windowSize.height * .65});
-        }else{
-            updatePdfPageDimensions({width: pdfPageDimensions.width, height: windowSize.height * .85});
-        }
-    }
-
-    useLayoutEffect(() => {
-        window.addEventListener('resize', resizeCanvas);
-        return () => window.removeEventListener('resize', resizeCanvas);
-    }, []);
-
     const onDocumentLoadSuccess = ({numPages}) => {
         updatePageData({pageNumber: 1, totalPages: numPages});
-        resizeCanvas();
     };
 
 // ~~~ Functions related to changing pages ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -61,7 +45,7 @@ export const PDFCanvas = ({filename}) => {
 
 
     let loadingBg = <BackgroundContainer>
-        <Center width={pdfPageDimensions.width} height={pdfPageDimensions.height}>
+        <Center width={400} height={600}>
             <CircularProgress isIndeterminate color="blue.300" size={100}/>
         </Center>
     </BackgroundContainer>
@@ -77,7 +61,6 @@ export const PDFCanvas = ({filename}) => {
                     <Document file={filename} onLoadSuccess={onDocumentLoadSuccess} loading={loadingBg}>
                         <Page
                             pageNumber={pageData.pageNumber}
-                            height={pdfPageDimensions.height}
                             loading={loadingBg}
                             wrap={true}/>
                         <Progress value={progress}/>
