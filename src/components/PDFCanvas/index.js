@@ -16,6 +16,7 @@ import {PageNumberInput} from "./PageNumberInput";
 
 export const PDFCanvas = ({filename}) => {
     const windowSize = useWindowSize();
+    const [pageScale, updatePageScale] = useState(1.0);
     const [pageData, updatePageData] = useState({pageNumber: 1, totalPages: 1})
     const progress = pageData.pageNumber / (pageData.totalPages / 100);
 
@@ -43,7 +44,6 @@ export const PDFCanvas = ({filename}) => {
         }
     }
 
-
     let loadingBg = <BackgroundContainer>
         <Center width={400} height={600}>
             <CircularProgress isIndeterminate color="blue.300" size={100}/>
@@ -53,6 +53,14 @@ export const PDFCanvas = ({filename}) => {
     const leftButton = windowSize.width > windowSize.height ? <PageButton isLeft={true} setPage={turnLeftPage}/> : <div/>
     const rightButton = windowSize.width > windowSize.height ? <PageButton isLeft={false} setPage={turnRightPage}/> : <div/>
 
+    const onPageLoad = (pageData) => {
+        console.log(pageData.width);
+        if(pageData.width >= windowSize.width){
+            let overflow = windowSize.width / pageData.width;
+            updatePageScale(overflow-0.05);
+        }
+    }
+
     return (
         <VStack>
             <HStack justifyContent={'center'}>
@@ -61,6 +69,8 @@ export const PDFCanvas = ({filename}) => {
                     <Document file={filename} onLoadSuccess={onDocumentLoadSuccess} loading={loadingBg}>
                         <Page
                             pageNumber={pageData.pageNumber}
+                            onLoadSuccess={onPageLoad}
+                            scale={pageScale}
                             loading={loadingBg}
                             wrap={true}/>
                         <Progress value={progress}/>
