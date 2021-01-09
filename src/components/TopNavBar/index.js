@@ -5,16 +5,16 @@ import {MenuToggle} from "./MenuToggle";
 import {MenuLinks} from "./MenuLinks";
 import {DarkModeSwitch} from "../DarkModeSwitch";
 
-export const NavBar = (props) => {
+export const NavBar = ({children}) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
 
     const darkModeSwitch = <DarkModeSwitch/>
 
-    const navChildren = [darkModeSwitch];
+    const navChildren = [children, darkModeSwitch];
 
     return (
-        <NavBarContainer {...props}>
+        <NavBarContainer>
             <Logo
                 w="200px"
             />

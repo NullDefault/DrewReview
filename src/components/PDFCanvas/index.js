@@ -71,9 +71,9 @@ export const PDFCanvas = ({filename}) => {
 
     return (
         <VStack>
-            <HStack spacing="24px" justifyContent={'center'}>
+            <HStack justifyContent={'center'}>
                 {leftButton}
-                <Box>
+                <Box pt="12">
                     <Document file={filename} onLoadSuccess={onDocumentLoadSuccess} loading={loadingBg}>
                         <Page
                             pageNumber={pageData.pageNumber}
@@ -85,7 +85,7 @@ export const PDFCanvas = ({filename}) => {
                 </Box>
                 {rightButton}
             </HStack>
-            <PageNumberInput pageData={pageData} setNewPage={setNewPage}/>
+            <PageNumberInput pageData={pageData} setNewPage={setNewPage} isMobile={windowSize.width < windowSize.height}/>
         </VStack>
     );
 }
