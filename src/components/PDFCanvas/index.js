@@ -17,11 +17,14 @@ import {PageNumberInput} from "./PageNumberInput";
 export const PDFCanvas = ({filename}) => {
     const windowSize = useWindowSize();
     const [pageScale, updatePageScale] = useState(1.0);
+    const [scaleFixed, setScaleFix] = useState(false);
     const [pageData, updatePageData] = useState({pageNumber: 1, totalPages: 1})
     const progress = pageData.pageNumber / (pageData.totalPages / 100);
 
     const onDocumentLoadSuccess = ({numPages}) => {
         updatePageData({pageNumber: 1, totalPages: numPages});
+        updatePageScale(1.0);
+        setScaleFix(false);
     };
 
 // ~~~ Functions related to changing pages ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -54,12 +57,15 @@ export const PDFCanvas = ({filename}) => {
     const rightButton = windowSize.width > windowSize.height ? <PageButton isLeft={false} setPage={turnRightPage}/> : <div/>
 
     const onPageLoad = (pageData) => {
-        if(pageData.width >= windowSize.width){
+        if(!scaleFixed && pageData.width >= windowSize.width){
             let overflow = windowSize.width / pageData.width;
-            updatePageScale(overflow.toFixed(1) - 0.05);
+            let newScale = parseFloat(overflow.toFixed(3));
+            updatePageScale(newScale);
+            if(pageData.pageNumber !== 1){
+                setScaleFix(true);
+            }
         }
     }
-
     return (
         <VStack>
             <HStack justifyContent={'center'}>
