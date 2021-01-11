@@ -48,7 +48,7 @@ export const PDFCanvas = ({filename}) => {
     }
 
     let loadingBg = <BackgroundContainer>
-        <Center width={400} height={600}>
+        <Center width={400} height={windowSize.width < windowSize.height ? 300: 600}>
             <CircularProgress isIndeterminate color="blue.300" size={100}/>
         </Center>
     </BackgroundContainer>
