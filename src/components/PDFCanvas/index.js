@@ -71,7 +71,11 @@ export const PDFCanvas = ({filename}) => {
             <HStack justifyContent={'center'}>
                 {leftButton}
                 <Box pt="12">
-                    <Document file={filename} onLoadSuccess={onDocumentLoadSuccess} loading={loadingBg}>
+                    <Document file={filename}
+                              onLoadSuccess={onDocumentLoadSuccess}
+                              loading={loadingBg}
+                              onSourceSuccess={()=>{updatePageData({pageNumber: 1, totalPages: 1})}}
+                    >
                         <Page
                             pageNumber={pageData.pageNumber}
                             onLoadSuccess={onPageLoad}
