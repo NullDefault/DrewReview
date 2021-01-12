@@ -70,7 +70,9 @@ const Index = () => {
             <BackgroundContainer>
                 <VStack>
                     <HStack justifyContent={'center'}>
-                        {isMobile ? yearSelect : null}
+                        <Box>
+                            {isMobile ? yearSelect : null}
+                        </Box>
                         <Box pt="12">
                             {pdfView}
                         </Box>
