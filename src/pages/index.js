@@ -67,6 +67,27 @@ const Index = () => {
     return (
         <Box>
             <NavBar children={isMobile ? null : yearSelect}/>
+            <div style={{
+                width: windowSize.width,
+                height: windowSize.height,
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                position: "fixed",
+                zIndex: -1,
+                backgroundSize: "cover",
+                backgroundImage: "url('/forest.gif')",
+                content: "",
+                opacity: 0.8,
+                backgroundBlendMode: "luminosity",
+                WebkitFilter: "blur(3px)",
+                MozFilter: "blur(3px)",
+                OFilter: "blur(3px)",
+                MsFilter: "blur(3px)",
+                filter: "blur(3px)",
+            }}>
+            </div>
             <BackgroundContainer>
                 <VStack justifyContent={'center'} spacing="12px">
                     <Box pt="24px">

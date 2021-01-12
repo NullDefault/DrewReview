@@ -6,8 +6,12 @@ export const BackgroundContainer = (props) => {
             direction="column"
             alignItems="center"
             justifyContent="flex-start"
-            bg="gray.900"
+            bg="transparent"
             color="white"
+            style={{
+                overflow: "auto",
+                position: "relative"
+            }}
             {...props}
         />
     )
