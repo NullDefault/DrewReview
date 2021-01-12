@@ -68,11 +68,11 @@ const Index = () => {
         <Box>
             <NavBar children={isMobile ? null : yearSelect}/>
             <BackgroundContainer>
-                <VStack justifyContent={'center'}>
+                <VStack justifyContent={'center'} spacing="12px">
                     <Box>
                         {isMobile ? yearSelect : null}
                     </Box>
-                    <Box pt="12">
+                    <Box>
                         {pdfView}
                     </Box>
                 </VStack>
