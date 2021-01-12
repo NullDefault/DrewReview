@@ -49,6 +49,12 @@ const Index = () => {
         <option value={2020}>2020</option>
     </Select>
 
+    const pdfView = windowSize.width < windowSize.height ? // if mobile render a link to the pdf
+                        <Box h="600px">
+                            <a href={filename}>Download Instead</a>
+                        </Box> :                           // otherwise render full pdf viewer
+                        <iframe style={{width: windowSize.width * .9, height: windowSize.height}} src={filename}/>
+
     return (
         <Box>
             <NavBar children={yearSelect}/>
@@ -56,8 +62,7 @@ const Index = () => {
                 <VStack>
                     <HStack justifyContent={'center'}>
                         <Box pt="12">
-                            {filename &&
-                            <iframe style={{width: windowSize.width * .9, height: windowSize.height}} src={filename}/>}
+                            {pdfView}
                         </Box>
                     </HStack>
                 </VStack>
