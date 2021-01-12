@@ -3,7 +3,7 @@ import firebase from './firebase';
 
 const authContext = createContext(undefined);
 
-export function ProvideAuth({children}){
+export function ProvideAuth({children}) {
     const auth = useProvideAuth();
     return <authContext.Provider value={auth}>{children}</authContext.Provider>
 }
@@ -12,7 +12,7 @@ export const useAuth = () => {
     return useContext(authContext);
 }
 
-function useProvideAuth(){
+function useProvideAuth() {
     const [user, setUser] = useState(null);
     const signInWithGithub = () => {
         return firebase
@@ -35,7 +35,7 @@ function useProvideAuth(){
 
     useEffect(() => {
         const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-            if (user){
+            if (user) {
                 setUser(user);
             } else {
                 setUser(false);

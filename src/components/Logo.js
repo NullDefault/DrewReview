@@ -10,7 +10,7 @@ export const Logo = (props) => {
                 />
                 <Center>
                     <Text color="white"
-                          fontSize={{ base: "md", sm: "xl" }}
+                          fontSize={{base: "md", sm: "xl"}}
                           fontWeight="light"
                           textTransform="uppercase"
                     >

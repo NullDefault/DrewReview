@@ -1,18 +1,18 @@
-import {Link as ChakraLink, Select, Icon, Box, Button, useColorMode} from '@chakra-ui/react';
+import {Link as ChakraLink, Select, Icon, Box, Button} from '@chakra-ui/react';
 import {useState} from "react";
 import {ExternalLinkIcon, TriangleDownIcon} from '@chakra-ui/icons';
 import {BackgroundContainer} from '../components/BackgroundContainer';
 import {Footer} from '../components/Footer';
 import {NavBar} from "../components/TopNavBar/index";
-import {PDFCanvas} from "../components/PDFCanvas/index";
 import {SideNav} from "../components/SideNav";
 import {useAuth} from "../lib/auth";
 import {HStack, VStack} from "@chakra-ui/layout";
+import {useWindowSize} from "../lib/windowSize";
 
 
 const Index = () => {
     const [chosenYear, setYear] = useState(2020);
-
+    const windowSize = useWindowSize();
     // The naming pattern for the pdf files is DrewReview_V{n}.pdf
     // There is no issue 0, as the first issue is for the year 2008 and is titled DrewReview_V1.pdf
     // Consequently, to get the right version number, you need to take the query year and subtract 2007 from it
@@ -53,7 +53,14 @@ const Index = () => {
         <Box>
             <NavBar children={yearSelect}/>
             <BackgroundContainer>
-                <PDFCanvas filename={filename}/>
+                <VStack>
+                    <HStack justifyContent={'center'}>
+                        <Box pt="12">
+                            {filename &&
+                            <iframe style={{width: windowSize.width * .9, height: windowSize.height}} src={filename}/>}
+                        </Box>
+                    </HStack>
+                </VStack>
                 <Footer>
                     <VStack spacing="24px">
                         <Box>
