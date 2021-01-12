@@ -66,7 +66,6 @@ const Index = () => {
 
     return (
         <Box>
-            <NavBar children={isMobile ? null : yearSelect}/>
             <div style={{
                 width: windowSize.width,
                 height: windowSize.height,
@@ -89,7 +88,8 @@ const Index = () => {
             }}>
             </div>
             <BackgroundContainer>
-                <VStack justifyContent={'center'} spacing="12px">
+                <NavBar children={isMobile ? null : yearSelect}/>
+                <VStack justifyContent={'center'} spacing="12px" mt="140px">
                     <Box pt="24px">
                         {isMobile ? yearSelect : null}
                     </Box>
