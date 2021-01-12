@@ -9,6 +9,7 @@ import {useAuth} from "../lib/auth";
 import {HStack, VStack} from "@chakra-ui/layout";
 import {useWindowSize} from "../lib/windowSize";
 import {isMobile} from 'react-device-detect';
+import {MenuItem} from "../components/TopNavBar/MenuItem";
 
 const Index = () => {
     const [chosenYear, setYear] = useState(2020);
@@ -24,30 +25,35 @@ const Index = () => {
         <Button spacing={3} onClick={() => auth.signOut()}> Sign Out</Button> // otherwise the sign out button
     }/>
 
-    const yearSelect = <Select placeholder="Select year"
-                               icon={<TriangleDownIcon/>}
-                               variant="outline"
-                               color="white"
-                               width="1/2"
-                               m="12px"
-                               value={chosenYear}
-                               onChange={(e) => {
-                                   setYear(e.target.value);
-                               }}>
-        <option value={2008}>2008</option>
-        <option value={2009}>2009</option>
-        <option value={2010}>2010</option>
-        <option value={2011}>2011</option>
-        <option value={2012}>2012</option>
-        <option value={2013}>2013</option>
-        <option value={2014}>2014</option>
-        <option value={2015}>2015</option>
-        <option value={2016}>2016</option>
-        <option value={2017}>2017</option>
-        <option value={2018}>2018</option>
-        <option value={2019}>2019</option>
-        <option value={2020}>2020</option>
-    </Select>
+    const yearSelect = <Box bgColor="blue.500" style={{borderRadius: '0.375rem'}}>
+        <Select placeholder="Select year"
+                icon={<TriangleDownIcon/>}
+                variant="filled"
+                color="white"
+                bg="blue.800"
+                borderColor="gray.700"
+                focusBorderColor="gray.600"
+                size="lg"
+                my="12px"
+                value={chosenYear}
+                onChange={(e) => {
+                    setYear(e.target.value);
+                }}>
+            <option value={2008}>2008</option>
+            <option value={2009}>2009</option>
+            <option value={2010}>2010</option>
+            <option value={2011}>2011</option>
+            <option value={2012}>2012</option>
+            <option value={2013}>2013</option>
+            <option value={2014}>2014</option>
+            <option value={2015}>2015</option>
+            <option value={2016}>2016</option>
+            <option value={2017}>2017</option>
+            <option value={2018}>2018</option>
+            <option value={2019}>2019</option>
+            <option value={2020}>2020</option>
+        </Select>
+    </Box>
 
     const pdfView = isMobile ? // if mobile render a link to the pdf
         <Box h="400px">
@@ -64,9 +70,13 @@ const Index = () => {
         </Box> : // otherwise render full pdf viewer
         <iframe style={{width: windowSize.width * .9, height: windowSize.height * .92}} src={filename}/>
 
+    const navLinks = [<MenuItem to="/">Archives</MenuItem>,
+        <MenuItem to="/submissions">Submitting a Paper</MenuItem>,
+        <MenuItem to="/boardApplications">Editorial Board Applications</MenuItem>]
+
     return (
         <Box>
-            <NavBar children={isMobile ? null : yearSelect}/>
+            <NavBar children={navLinks}/>
             <div style={{
                 width: windowSize.width,
                 height: windowSize.height,
@@ -91,7 +101,7 @@ const Index = () => {
             <BackgroundContainer>
                 <VStack justifyContent={'center'} spacing="12px">
                     <Box pt="24px">
-                        {isMobile ? yearSelect : null}
+                        {yearSelect}
                     </Box>
                     <Box>
                         {pdfView}
