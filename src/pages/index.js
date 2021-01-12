@@ -62,7 +62,7 @@ const Index = () => {
                                 </Box>
                             </VStack>
                         </Box> : // otherwise render full pdf viewer
-                        <iframe style={{width: windowSize.width * .9, height: windowSize.height}} src={filename}/>
+                        <iframe style={{width: windowSize.width * .9, height: windowSize.height * .92}} src={filename}/>
 
     return (
         <Box>
@@ -80,15 +80,12 @@ const Index = () => {
                         <Box>
                             <ChakraLink
                                 isExternal
-                                href="https://www.drew.edu"
+                                href="https://www.drew.edu/library/2019/08/19/drew-publications/"
                                 flexGrow={2}
                             >
-                                Drew University <Icon as={ExternalLinkIcon} mx="2px"/>
+                                University Archives <Icon as={ExternalLinkIcon} mx="2px"/>
                             </ChakraLink>
                         </Box>
-                        <HStack>
-                            {sideNav}
-                        </HStack>
                     </VStack>
                 </Footer>
             </BackgroundContainer>
