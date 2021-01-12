@@ -1,4 +1,4 @@
-import {Link as ChakraLink, Select, Icon, Box, Button} from '@chakra-ui/react';
+import {Link as ChakraLink, Select, Icon, Box, Button, Center} from '@chakra-ui/react';
 import {useState} from "react";
 import {ExternalLinkIcon, TriangleDownIcon} from '@chakra-ui/icons';
 import {BackgroundContainer} from '../components/BackgroundContainer';
@@ -51,8 +51,18 @@ const Index = () => {
 
     const pdfView = windowSize.width < windowSize.height ? // if mobile render a link to the pdf
                         <Box h="600px">
-                            <a href={filename}>Download Instead</a>
-                        </Box> :                           // otherwise render full pdf viewer
+                            <VStack>
+                                <Box mt="100px">
+                                    <ChakraLink
+                                        isExternal
+                                        href={filename}
+                                        flexGrow={2}
+                                    >
+                                        View Drew Review for {chosenYear}<Icon as={ExternalLinkIcon} mx="12px"/>
+                                    </ChakraLink>
+                                </Box>
+                            </VStack>
+                        </Box> : // otherwise render full pdf viewer
                         <iframe style={{width: windowSize.width * .9, height: windowSize.height}} src={filename}/>
 
     return (
