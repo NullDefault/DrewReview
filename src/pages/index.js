@@ -50,33 +50,31 @@ const Index = () => {
     </Select>
 
     const pdfView = isMobile ? // if mobile render a link to the pdf
-                        <Box h="600px">
-                            <VStack>
-                                <Box mt="100px">
-                                    <ChakraLink
-                                        href={filename}
-                                        flexGrow={2}
-                                    >
-                                        View Drew Review for {chosenYear}<Icon as={ExternalLinkIcon} mx="12px"/>
-                                    </ChakraLink>
-                                </Box>
-                            </VStack>
-                        </Box> : // otherwise render full pdf viewer
-                        <iframe style={{width: windowSize.width * .9, height: windowSize.height * .92}} src={filename}/>
+        <Box h="600px">
+            <VStack>
+                <Box mt="100px">
+                    <ChakraLink
+                        href={filename}
+                        flexGrow={2}
+                    >
+                        View Drew Review for {chosenYear}<Icon as={ExternalLinkIcon} mx="12px"/>
+                    </ChakraLink>
+                </Box>
+            </VStack>
+        </Box> : // otherwise render full pdf viewer
+        <iframe style={{width: windowSize.width * .9, height: windowSize.height * .92}} src={filename}/>
 
     return (
         <Box>
             <NavBar children={isMobile ? null : yearSelect}/>
             <BackgroundContainer>
-                <VStack>
-                    <HStack justifyContent={'center'}>
-                        <Box>
-                            {isMobile ? yearSelect : null}
-                        </Box>
-                        <Box pt="12">
-                            {pdfView}
-                        </Box>
-                    </HStack>
+                <VStack justifyContent={'center'}>
+                    <Box>
+                        {isMobile ? yearSelect : null}
+                    </Box>
+                    <Box pt="12">
+                        {pdfView}
+                    </Box>
                 </VStack>
                 <Footer>
                     <VStack spacing="24px">
