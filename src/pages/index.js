@@ -69,7 +69,7 @@ const Index = () => {
             <NavBar children={isMobile ? null : yearSelect}/>
             <BackgroundContainer>
                 <VStack justifyContent={'center'} spacing="12px">
-                    <Box>
+                    <Box pt="24px">
                         {isMobile ? yearSelect : null}
                     </Box>
                     <Box>
