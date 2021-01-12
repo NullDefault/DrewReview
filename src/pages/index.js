@@ -1,4 +1,4 @@
-import {Link as ChakraLink, Select, Icon, Box, Button} from '@chakra-ui/react';
+import {Link as ChakraLink, Select, Icon, Box, Button, Image} from '@chakra-ui/react';
 import {useState} from "react";
 import {ExternalLinkIcon, TriangleDownIcon} from '@chakra-ui/icons';
 import {BackgroundContainer} from '../components/BackgroundContainer';
@@ -88,6 +88,12 @@ const Index = () => {
                             >
                                 University Archives <Icon as={ExternalLinkIcon} mx="2px"/>
                             </ChakraLink>
+                        </Box>
+                        <Box>
+                            <Image
+                                src="/favicon.ico"
+                                w={{base: "75px", sm: "125px"}}
+                            />
                         </Box>
                     </VStack>
                 </Footer>
