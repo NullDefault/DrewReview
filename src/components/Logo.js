@@ -1,4 +1,4 @@
-import {Image, Box, Text, VStack, Center} from '@chakra-ui/react';
+import {Box, Center, Image, Text, VStack} from '@chakra-ui/react';
 
 export const Logo = (props) => {
     return (

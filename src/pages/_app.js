@@ -1,4 +1,4 @@
-import {ThemeProvider, CSSReset, ColorModeProvider, theme} from '@chakra-ui/react';
+import {ColorModeProvider, CSSReset, theme, ThemeProvider} from '@chakra-ui/react';
 import {ProvideAuth} from "../lib/auth";
 
 function MyApp({Component, pageProps}) {

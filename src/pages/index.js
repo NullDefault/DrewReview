@@ -1,4 +1,4 @@
-import {Link as ChakraLink, Select, Icon, Box, Button, Image} from '@chakra-ui/react';
+import {Box, Button, Icon, Link as ChakraLink, Select} from '@chakra-ui/react';
 import {useState} from "react";
 import {ExternalLinkIcon, TriangleDownIcon} from '@chakra-ui/icons';
 import {BackgroundContainer} from '../components/BackgroundContainer';
@@ -6,10 +6,9 @@ import {Footer} from '../components/Footer';
 import {NavBar} from "../components/TopNavBar/index";
 import {SideNav} from "../components/SideNav";
 import {useAuth} from "../lib/auth";
-import {HStack, VStack} from "@chakra-ui/layout";
+import {VStack} from "@chakra-ui/layout";
 import {useWindowSize} from "../lib/windowSize";
 import {isMobile} from 'react-device-detect';
-import {MenuItem} from "../components/TopNavBar/MenuItem";
 
 const Index = () => {
     const [chosenYear, setYear] = useState(2020);
@@ -70,13 +69,9 @@ const Index = () => {
         </Box> : // otherwise render full pdf viewer
         <iframe style={{width: windowSize.width * .9, height: windowSize.height * .92}} src={filename}/>
 
-    const navLinks = [<MenuItem to="/">Archives</MenuItem>,
-        <MenuItem to="/submissions">Submitting a Paper</MenuItem>,
-        <MenuItem to="/boardApplications">Editorial Board Applications</MenuItem>]
-
     return (
         <Box>
-            <NavBar children={navLinks}/>
+            <NavBar/>
             <div style={{
                 width: windowSize.width,
                 height: windowSize.height,
@@ -96,8 +91,7 @@ const Index = () => {
                 OFilter: "blur(3px)",
                 MsFilter: "blur(3px)",
                 filter: "blur(3px)",
-            }}>
-            </div>
+            }}/>
             <BackgroundContainer>
                 <VStack justifyContent={'center'} spacing="12px">
                     <Box pt="24px">
@@ -107,25 +101,7 @@ const Index = () => {
                         {pdfView}
                     </Box>
                 </VStack>
-                <Footer>
-                    <VStack spacing="24px">
-                        <Box>
-                            <ChakraLink
-                                isExternal
-                                href="https://www.drew.edu/library/2019/08/19/drew-publications/"
-                                flexGrow={2}
-                            >
-                                University Archives <Icon as={ExternalLinkIcon} mx="2px"/>
-                            </ChakraLink>
-                        </Box>
-                        <Box>
-                            <Image
-                                src="/favicon.ico"
-                                w={{base: "75px", sm: "125px"}}
-                            />
-                        </Box>
-                    </VStack>
-                </Footer>
+                <Footer/>
             </BackgroundContainer>
         </Box>
     )
