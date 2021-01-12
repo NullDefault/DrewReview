@@ -54,7 +54,6 @@ const Index = () => {
                             <VStack>
                                 <Box mt="100px">
                                     <ChakraLink
-                                        isExternal
                                         href={filename}
                                         flexGrow={2}
                                     >
