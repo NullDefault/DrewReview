@@ -66,10 +66,11 @@ const Index = () => {
 
     return (
         <Box>
-            <NavBar children={yearSelect}/>
+            <NavBar children={isMobile ? null : yearSelect}/>
             <BackgroundContainer>
                 <VStack>
                     <HStack justifyContent={'center'}>
+                        {isMobile ? yearSelect : null}
                         <Box pt="12">
                             {pdfView}
                         </Box>
