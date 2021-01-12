@@ -1,4 +1,4 @@
-import {Link as ChakraLink, Select, Icon, Box, Button, Center} from '@chakra-ui/react';
+import {Link as ChakraLink, Select, Icon, Box, Button} from '@chakra-ui/react';
 import {useState} from "react";
 import {ExternalLinkIcon, TriangleDownIcon} from '@chakra-ui/icons';
 import {BackgroundContainer} from '../components/BackgroundContainer';
@@ -8,7 +8,7 @@ import {SideNav} from "../components/SideNav";
 import {useAuth} from "../lib/auth";
 import {HStack, VStack} from "@chakra-ui/layout";
 import {useWindowSize} from "../lib/windowSize";
-
+import {isMobile} from 'react-device-detect';
 
 const Index = () => {
     const [chosenYear, setYear] = useState(2020);
@@ -49,7 +49,7 @@ const Index = () => {
         <option value={2020}>2020</option>
     </Select>
 
-    const pdfView = windowSize.width < windowSize.height ? // if mobile render a link to the pdf
+    const pdfView = isMobile ? // if mobile render a link to the pdf
                         <Box h="600px">
                             <VStack>
                                 <Box mt="100px">

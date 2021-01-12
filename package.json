@@ -19,6 +19,7 @@
     "next": "10.0.3",
     "pdfjs-dist": "^2.5.207",
     "react": "17.0.1",
+    "react-device-detect": "^1.15.0",
     "react-dom": "17.0.1",
     "react-pdf": "^5.1.0"
   }
