@@ -50,7 +50,7 @@ const Index = () => {
     </Select>
 
     const pdfView = isMobile ? // if mobile render a link to the pdf
-        <Box h="600px">
+        <Box h="400px">
             <VStack>
                 <Box mt="100px">
                     <ChakraLink
