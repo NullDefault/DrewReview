@@ -12,8 +12,6 @@ import {HStack, VStack} from "@chakra-ui/layout";
 
 const Index = () => {
     const [chosenYear, setYear] = useState(2020);
-    const { colorMode } = useColorMode();
-    const color = { light: 'black', dark: 'white' };
 
     // The naming pattern for the pdf files is DrewReview_V{n}.pdf
     // There is no issue 0, as the first issue is for the year 2008 and is titled DrewReview_V1.pdf
@@ -29,7 +27,7 @@ const Index = () => {
     const yearSelect = <Select placeholder="Select year"
                                icon={<TriangleDownIcon/>}
                                variant="outline"
-                               color={color[colorMode]}
+                               color="white"
                                width="1/2"
                                m="12px"
                                value={chosenYear}
