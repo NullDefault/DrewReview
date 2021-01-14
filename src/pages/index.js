@@ -1,4 +1,4 @@
-import {Box, Button, Icon, Link as ChakraLink, Select} from '@chakra-ui/react';
+import {Box, Button, Divider, Icon, Link as ChakraLink, Select} from '@chakra-ui/react';
 import {useState} from "react";
 import {ExternalLinkIcon, TriangleDownIcon} from '@chakra-ui/icons';
 import {BackgroundContainer} from '../components/BackgroundContainer';
@@ -84,13 +84,13 @@ const Index = () => {
                 backgroundSize: "cover",
                 backgroundImage: "url('/forest.gif')",
                 content: "",
-                opacity: 0.8,
+                opacity: 0.9,
                 backgroundBlendMode: "luminosity",
-                WebkitFilter: "blur(3px)",
-                MozFilter: "blur(3px)",
-                OFilter: "blur(3px)",
-                MsFilter: "blur(3px)",
-                filter: "blur(3px)",
+                WebkitFilter: "blur(3px) brightness(85%)",
+                MozFilter: "blur(3px) brightness(85%)",
+                OFilter: "blur(3px) brightness(85%)",
+                MsFilter: "blur(3px) brightness(85%)",
+                filter: "blur(3px) brightness(85%)",
             }}/>
             <BackgroundContainer>
                 <VStack justifyContent={'center'} spacing="12px">
@@ -99,6 +99,13 @@ const Index = () => {
                     </Box>
                     <Box>
                         {pdfView}
+                    </Box>
+                    <Box w="50%" textAlign="center" bg="blue.800" style={{borderRadius: '0.375rem'}} p="24px">
+                        The Drew Review is the annual research journal for the undergraduates of the Drew University
+                        College of Liberal Arts, publishing undergraduate research from the previous calendar year.
+                        <div/>
+                        Our mission is to showcase the intellectual vibrancy of the students of the CLA.
+                        <Divider mt="8px"/>
                     </Box>
                 </VStack>
                 <Footer/>
