@@ -100,7 +100,7 @@ const Index = () => {
                     <Box>
                         {pdfView}
                     </Box>
-                    <Box w="50%" textAlign="center" bg="blue.800" style={{borderRadius: '0.375rem'}} p="24px">
+                    <Box w={isMobile ? "90%" : "60%"} textAlign="center" bg="blue.800" style={{borderRadius: '0.375rem'}} p="24px">
                         The Drew Review is the annual research journal for the undergraduates of the Drew University
                         College of Liberal Arts, publishing undergraduate research from the previous calendar year.
                         <div/>
