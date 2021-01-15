@@ -8,12 +8,6 @@ export const Footer = (props) => <Flex as="footer" py="8rem" {...props}>
             color="white"
         >
             <ChakraLink
-                href="/about"
-                flexGrow={2}
-                >
-                About <Icon as={ExternalLinkIcon} mx="2px"/>
-            </ChakraLink>
-            <ChakraLink
                 isExternal
                 href="https://www.drew.edu/library/2019/08/19/drew-publications/"
                 flexGrow={2}

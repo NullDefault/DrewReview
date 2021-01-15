@@ -82,7 +82,7 @@ const Index = () => {
                 position: "fixed",
                 zIndex: -1,
                 backgroundSize: "cover",
-                backgroundImage: "url('/forest.gif')",
+                backgroundImage: "url('/forest.png')",
                 content: "",
                 opacity: 0.9,
                 backgroundBlendMode: "luminosity",
