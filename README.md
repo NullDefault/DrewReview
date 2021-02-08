@@ -1,4 +1,8 @@
+<img src="https://github.com/DrewUniversityCS/DrewReview/blob/main/public/favicon.ico" alt="icon" width="128" height="128">
+
 ### <a href="https://drewreview.vercel.app/">Drew Review Website</a>
+
+<div><img src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/><img src="https://img.shields.io/badge/react%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/></div>
 
 The Drew Review is the annual research journal for the undergraduates of the Drew University College of Liberal Arts, publishing undergraduate research from the previous calendar year. Its mission is to showcase the intellectual vibrancy of the students of the CLA.
 
