@@ -18,12 +18,6 @@ const Index = () => {
     // There is no issue 0, as the first issue is for the year 2008 and is titled DrewReview_V1.pdf
     // Consequently, to get the right version number, you need to take the query year and subtract 2007 from it
     const filename = `/DrewReview_V${chosenYear - 2007}.pdf`;
-    const auth = useAuth();
-
-    const sideNav = <SideNav children={!auth?.user ? // if user is already logged in, show sign in button...
-        <Button spacing={3} onClick={() => auth.signInWithGithub()}> Sign In </Button> :
-        <Button spacing={3} onClick={() => auth.signOut()}> Sign Out</Button> // otherwise the sign out button
-    }/>
 
     const yearSelect = <Box bgColor="blue.500" style={{borderRadius: '0.375rem'}}>
         <Select placeholder="Select year"

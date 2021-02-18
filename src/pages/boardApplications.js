@@ -12,7 +12,7 @@ const BoardApplications = () => {
             <BgImage/>
             <VStack>
                 <BackgroundContainer>
-                    <Text textAlign="center" m="36px" p="24px" rounded="md" bgColor="blue.700">
+                    <Text textAlign="center" m="36px" p="10%" rounded="md" bgColor="blue.700">
                         <h1>
                             Do you want to serve on the editorial board of The Drew Review? Send an application to be an editor!
                         </h1>

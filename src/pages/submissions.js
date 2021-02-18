@@ -12,7 +12,7 @@ const Submissions = () => {
                 <BgImage/>
                 <VStack>
                     <BackgroundContainer>
-                        <Text textAlign="center" m="36px" p="24px" rounded="md" bgColor="blue.700">
+                        <Text textAlign="center" m="36px" p="10%" rounded="md" bgColor="blue.700">
                             <h1>
                                 Did you write a final research paper this semester that you would like to publish? Submit it to The Drew Review now!
                             </h1>
