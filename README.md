@@ -8,6 +8,8 @@ The Drew Review is the annual research journal for the undergraduates of the Dre
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+![](https://raw.githubusercontent.com/DrewUniversityCS/DrewReview/main/public/screenshot.png)
+
 ## Getting Started
 
 First, run the development server:
