@@ -8,9 +8,10 @@ export const NavBarContainer = ({ children, ...props }) => {
       justify="space-between"
       wrap="wrap"
       w="100%"
-      p={8}
       bg={"blue.800"}
       color={"blue.800"}
+      borderBottomWidth={4}
+      borderBottomColor={"gray.400"}
       {...props}
     >
       {children}
