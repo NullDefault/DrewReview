@@ -4,7 +4,7 @@ export const Logo = (props) => {
   return (
     <Box {...props}>
       <VStack>
-        <Box _focus={{}} _active={{}} _highlighted={{}} outl>
+        <Box _focus={{}} _active={{}} _highlighted={{}}>
           <a href="https://www.drew.edu/1/" target="_blank">
             <Image
               src="/drew-logo.png"
