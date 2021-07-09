@@ -1,4 +1,4 @@
-<img src="https://github.com/DrewUniversityCS/DrewReview/blob/main/public/favicon.ico" alt="icon" width="128" height="128">
+<img src="https://raw.githubusercontent.com/NullDefault/DrewReview/main/public/favicon.ico" alt="icon" width="128" height="128">
 
 ### <a href="https://drewreview.vercel.app/">Drew Review Website</a>
 
