@@ -5,20 +5,28 @@ import {
   ThemeProvider,
 } from "@chakra-ui/react";
 import { ProvideAuth } from "../lib/auth";
+import AppNav from "../components/AppNav";
+import {ProvideYear} from "../lib/year";
 
 function MyApp({ Component, pageProps }) {
-  return (
+    return (
     <ProvideAuth>
-      <ThemeProvider theme={theme}>
-        <ColorModeProvider
-          options={{
-            useSystemColorMode: true,
-          }}
-        >
-          <CSSReset />
-          <Component {...pageProps} />
-        </ColorModeProvider>
-      </ThemeProvider>
+      <ProvideYear>
+        <ThemeProvider theme={theme}>
+          <ColorModeProvider
+              options={{
+                useSystemColorMode: true,
+              }}
+          >
+            <CSSReset />
+            <AppNav>
+              <Component {...pageProps} />
+            </AppNav>
+
+          </ColorModeProvider>
+        </ThemeProvider>
+      </ProvideYear>
+
     </ProvideAuth>
   );
 }
