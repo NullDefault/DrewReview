@@ -16,6 +16,7 @@ const Index = () => {
     >
       <object
         data={filename}
+        type="application/pdf"
         style={{
           display: "block",
           width: "100%",
@@ -23,7 +24,8 @@ const Index = () => {
         }}
       >
         <p>
-          <a href={filename}>Click here to view the file.</a>
+          Your web browser doesn't have a PDF plugin. Instead you can{" "}
+          <a href={filename}>click here to view the PDF file.</a>
         </p>
       </object>
     </Box>
