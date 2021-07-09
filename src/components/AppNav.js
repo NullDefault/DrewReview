@@ -139,13 +139,14 @@ export default function AppNav({ children }) {
             Board Applications
           </NavItem>
         </Box>
-        <Spacer />
-        <VStack spacing="24px">
-          <Box>
-            <Image src="/favicon.ico" w={{ base: "75px", sm: "100px" }} />
-          </Box>
-          <Box color="white">© 2021 Drew University</Box>
-        </VStack>
+        <Flex direction="column" width="full" position="absolute" bottom="12">
+          <VStack spacing="24px" mx="auto" width="full">
+            <Box w={{ base: "75px", sm: "100px" }}>
+              <Image src="/favicon.ico" />
+            </Box>
+            <Box color="white">© 2021 Drew University</Box>
+          </VStack>
+        </Flex>
       </Flex>
     </Box>
   );

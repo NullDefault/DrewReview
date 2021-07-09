@@ -1,21 +1,21 @@
-import { createContext, useContext,  useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const yearContext = createContext(undefined);
 
 export function ProvideYear({ children }) {
-    const year = useProvideYear();
-    return <yearContext.Provider value={year}>{children}</yearContext.Provider>;
+  const year = useProvideYear();
+  return <yearContext.Provider value={year}>{children}</yearContext.Provider>;
 }
 
 export const useYear = () => {
-    return useContext(yearContext);
+  return useContext(yearContext);
 };
 
 function useProvideYear() {
-    const [year, setYear] = useState(2020);
+  const [year, setYear] = useState(2020);
 
-    return {
-        year,
-        setYear
-    };
+  return {
+    year,
+    setYear,
+  };
 }

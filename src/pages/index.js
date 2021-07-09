@@ -14,22 +14,24 @@ const Index = () => {
       width={{ base: "90vw", md: "60vw", lg: "70vw", xl: "80vw" }}
       height="95vh"
     >
-      <iframe
+      <object
+        data={filename}
         style={{
           display: "block",
           width: "100%",
           height: "100%",
         }}
-        src={filename}
-      />
+      >
+        <p>
+          <a href={filename}>Click here to view the file.</a>
+        </p>
+      </object>
     </Box>
   );
 
   return (
     <>
-      <VStack>
-        {pdfView}
-      </VStack>
+      <VStack>{pdfView}</VStack>
     </>
   );
 };
