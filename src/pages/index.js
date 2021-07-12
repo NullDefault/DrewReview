@@ -1,6 +1,7 @@
-import { Box } from "@chakra-ui/react";
-import { VStack } from "@chakra-ui/layout";
+import { Box, Center, Link, VStack } from "@chakra-ui/react";
 import { useYear } from "../lib/year";
+import { MobileView } from "react-device-detect";
+import React from "react";
 
 const Index = () => {
   // The naming pattern for the pdf files is DrewReview_V{n}.pdf
@@ -35,7 +36,19 @@ const Index = () => {
 
   return (
     <>
-      <VStack>{pdfView}</VStack>
+      <VStack>
+          <MobileView>
+              <Center py={12}>
+                  If your browser does not support embedded PDF's, you can view the
+                  file
+                  <Link color="blue.500" href="#mailto:drewreview@drew.edu">
+                      here
+                  </Link>
+                  .
+              </Center>
+          </MobileView>
+        {pdfView}
+      </VStack>
     </>
   );
 };
