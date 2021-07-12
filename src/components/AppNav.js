@@ -4,7 +4,6 @@ import {
   DrawerContent,
   DrawerOverlay,
   Flex,
-  Spacer,
   IconButton,
   Icon,
   useColorModeValue,
@@ -14,20 +13,21 @@ import {
 } from "@chakra-ui/react";
 import { RiTeamFill } from "react-icons/ri";
 import { BsInfoSquareFill } from "react-icons/bs";
-import { GiBookshelf } from "react-icons/gi";
+import { GiBookshelf, GiTrumpetFlag } from "react-icons/gi";
 import { FiMenu } from "react-icons/fi";
-import { MdHome } from "react-icons/md";
 import { Logo } from "./Logo";
 import Link from "next/link";
-import { InfoIcon, TriangleDownIcon } from "@chakra-ui/icons";
+import { TriangleDownIcon } from "@chakra-ui/icons";
 import { useYear } from "../lib/year";
 import { VStack } from "@chakra-ui/layout";
+import { useRouter } from "next/router";
 
 export default function AppNav({ children }) {
   const sidebar = useDisclosure();
+  const router = useRouter();
   const yearContext = useYear();
 
-  const yearSelect = (
+  const yearSelect = router.pathname === '/' ? (
     <Box>
       <Select
         placeholder="Select year"
@@ -57,7 +57,7 @@ export default function AppNav({ children }) {
         <option value={2020}>2020</option>
       </Select>
     </Box>
-  );
+  ) : (<></>);
 
   const NavItem = (props) => {
     const { icon, children, to = "/", ...rest } = props;
@@ -66,8 +66,7 @@ export default function AppNav({ children }) {
         <a>
           <Flex
             align="center"
-            px="4"
-            pl="4"
+            pl="8"
             py="3"
             cursor="pointer"
             color={useColorModeValue("inherit", "gray.400")}
@@ -109,13 +108,13 @@ export default function AppNav({ children }) {
       overflowX="hidden"
       overflowY="auto"
       bg={useColorModeValue("white", "gray.800")}
-      borderColor={useColorModeValue("inherit", "gray.700")}
-      borderRightWidth="1px"
+      borderColor={useColorModeValue("inherit", "gray.900")}
+      borderRightWidth="6px"
       w="60"
       {...props}
     >
       <Flex px="6" align="center">
-        <Logo px="6" pt="6" />
+        <Logo px="3" pt="8" />
       </Flex>
       <Flex
         direction="column"
@@ -126,14 +125,17 @@ export default function AppNav({ children }) {
         height="70vh"
       >
         <Box>
-          <Box p={4}>{yearSelect}</Box>
-
-          <NavItem icon={MdHome}>Home</NavItem>
-          <NavItem icon={GiBookshelf} to="/collections">
-            Collections
-          </NavItem>
+          <Box px={7} py={5}>
+            {yearSelect}
+          </Box>
           <NavItem icon={BsInfoSquareFill} to="/about">
             About
+          </NavItem>
+          <NavItem icon={GiBookshelf} to="/">
+            Archives
+          </NavItem>
+          <NavItem icon={GiTrumpetFlag} to="/callForPapers">
+            Call for Papers
           </NavItem>
           <NavItem icon={RiTeamFill} to="/boardApplications">
             Board Applications
@@ -188,7 +190,12 @@ export default function AppNav({ children }) {
             my="4"
           />
         </Flex>
-        <Box as="main" p="4">
+        <Box
+          as="main"
+          style={{
+            backgroundImage: "url('/church-on-sunday.svg')",
+          }}
+        >
           {children}
         </Box>
       </Box>

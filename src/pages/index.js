@@ -12,7 +12,7 @@ const Index = () => {
   const pdfView = (
     <Box
       width={{ base: "90vw", md: "60vw", lg: "70vw", xl: "80vw" }}
-      height="95vh"
+      height="100vh"
     >
       <object
         data={filename}
@@ -21,6 +21,8 @@ const Index = () => {
           display: "block",
           width: "100%",
           height: "100%",
+          paddingTop: "1rem",
+          paddingBottom: "1rem",
         }}
       >
         <p>
