@@ -20,8 +20,8 @@ const CTA = () => {
   return (
     <Flex
       direction={{ base: "column", lg: "row" }}
-      px={24}
-      py={24}
+      px={{ base: 12, lg: 24 }}
+      pb={24}
       mt={12}
       mx="auto"
     >

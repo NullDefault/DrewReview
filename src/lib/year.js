@@ -12,7 +12,7 @@ export const useYear = () => {
 };
 
 function useProvideYear() {
-  const [year, setYear] = useState(2020);
+  const [year, setYear] = useState(2021);
 
   return {
     year,

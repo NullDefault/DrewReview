@@ -9,7 +9,7 @@ const CallForPapers = () => {
           w={{ base: "full", md: 11 / 12, xl: 9 / 12 }}
           mx="auto"
           py={8}
-          px={2}
+          px={4}
         >
           <chakra.h2
             fontSize={{ base: "3xl", sm: "4xl" }}
