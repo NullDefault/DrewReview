@@ -32,7 +32,7 @@ const Index = () => {
 
   return (
     <>
-      <VStack>
+      <VStack justify="start">
           <MobileView>
               <Text py="12px">
                   If your web browser doesn't have a PDF plugin. Instead you can{" "}
