@@ -1,4 +1,4 @@
-import { Box, Center, Link, VStack } from "@chakra-ui/react";
+import { Box, Text, Link, VStack } from "@chakra-ui/react";
 import { useYear } from "../lib/year";
 import { MobileView } from "react-device-detect";
 import React from "react";
@@ -26,10 +26,6 @@ const Index = () => {
           paddingBottom: "1rem",
         }}
       >
-        <p>
-          Your web browser doesn't have a PDF plugin. Instead you can{" "}
-          <a href={filename}>click here to view the PDF file.</a>
-        </p>
       </object>
     </Box>
   );
@@ -38,14 +34,10 @@ const Index = () => {
     <>
       <VStack>
           <MobileView>
-              <Center py={12}>
-                  If your browser does not support embedded PDF's, you can view the
-                  file
-                  <Link color="blue.500" href="#mailto:drewreview@drew.edu">
-                      here
-                  </Link>
-                  .
-              </Center>
+              <Text py="12px">
+                  If your web browser doesn't have a PDF plugin. Instead you can{" "}
+                  <Link color="blue.500" href={filename}>click here to view the PDF file.</Link>
+              </Text>
           </MobileView>
         {pdfView}
       </VStack>
