@@ -9,20 +9,20 @@ import { ProvideYear } from "../lib/year";
 
 function MyApp({ Component, pageProps }) {
   return (
-      <ProvideYear>
-        <ThemeProvider theme={theme}>
-          <ColorModeProvider
-            options={{
-              useSystemColorMode: true,
-            }}
-          >
-            <CSSReset />
-            <AppNav>
-              <Component {...pageProps} />
-            </AppNav>
-          </ColorModeProvider>
-        </ThemeProvider>
-      </ProvideYear>
+    <ProvideYear>
+      <ThemeProvider theme={theme}>
+        <ColorModeProvider
+          options={{
+            useSystemColorMode: true,
+          }}
+        >
+          <CSSReset />
+          <AppNav>
+            <Component {...pageProps} />
+          </AppNav>
+        </ColorModeProvider>
+      </ThemeProvider>
+    </ProvideYear>
   );
 }
 

@@ -7,7 +7,7 @@ const About = () => {
         <Text
           mb={6}
           py={24}
-          px={{base: 8, md: 12}}
+          px={{ base: 8, md: 12 }}
           fontSize={{ base: "4xl", md: "6xl" }}
           lineHeight="1"
           letterSpacing={{ base: "normal", md: "tight" }}

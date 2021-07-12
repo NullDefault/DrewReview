@@ -1,4 +1,11 @@
-import { Box, chakra, UnorderedList, ListItem, VStack, Link } from "@chakra-ui/react";
+import {
+  Box,
+  chakra,
+  UnorderedList,
+  ListItem,
+  VStack,
+  Link,
+} from "@chakra-ui/react";
 import React from "react";
 
 const CallForPapers = () => {
