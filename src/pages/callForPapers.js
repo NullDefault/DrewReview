@@ -1,11 +1,4 @@
-import {
-  Box,
-  chakra,
-  UnorderedList,
-  ListItem,
-  VStack,
-  Link,
-} from "@chakra-ui/react";
+import { Box, chakra, SimpleGrid, VStack, Link } from "@chakra-ui/react";
 import React from "react";
 
 const CallForPapers = () => {
@@ -43,18 +36,65 @@ const CallForPapers = () => {
             journal. <br /> Our mission is to showcase the intellectual vibrancy
             of the students of the CLA.
           </chakra.p>
-          <chakra.p fontSize={{ base: "xl", md: "2xl" }} color="white">
-            Guidelines for submission:
-            <UnorderedList mt={6} spacing={3}>
-              <ListItem>Any language,</ListItem>
-              <ListItem>Any discipline,</ListItem>
-              <ListItem>
-                Word document (with the author’s name and any other identifying
-                information removed),
-              </ListItem>
-              <ListItem>Students may be asked to make revisions.</ListItem>
-            </UnorderedList>
-          </chakra.p>
+
+          <SimpleGrid
+            alignItems="center"
+            columns={{ base: 1, lg: 2 }}
+            spacingY={{ base: 10, lg: 32 }}
+            spacingX={{ base: 10, lg: 24 }}
+            p={8}
+          >
+            <Box>
+              <chakra.h2
+                mb={3}
+                fontSize={{ base: "3xl", md: "4xl" }}
+                fontWeight="extrabold"
+                textAlign={{ base: "center", sm: "left" }}
+                color="white"
+                lineHeight="shorter"
+                letterSpacing="tight"
+              >
+                Guidelines for Submission
+              </chakra.h2>
+              <chakra.p
+                mb={6}
+                fontSize={{ base: "lg", md: "xl" }}
+                textAlign={{ base: "center", sm: "left" }}
+                color="gray.500"
+              >
+                Students may be asked to make revisions. <br /> The author’s name and
+                any other identifying information should be removed.
+              </chakra.p>
+            </Box>
+            <VStack
+              direction="column"
+              flexGrow={1}
+              spacing={5}
+              alignItems="center"
+            >
+              <chakra.ul>
+                <chakra.li
+                  fontSize={{ base: "3xl", md: "4xl" }}
+                  color="gray.400"
+                >
+                  Any Language
+                </chakra.li>
+                <chakra.li
+                  fontSize={{ base: "3xl", md: "4xl" }}
+                  color="gray.400"
+                >
+                  Any Discipline
+                </chakra.li>
+                <chakra.li
+                  fontSize={{ base: "3xl", md: "4xl" }}
+                  color="gray.400"
+                >
+                  Word Document
+                </chakra.li>
+              </chakra.ul>
+            </VStack>
+          </SimpleGrid>
+
           <chakra.p
             fontSize={{ base: "xl", md: "2xl" }}
             color="gray.400"
