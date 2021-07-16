@@ -32,11 +32,13 @@ const Index = () => {
   return (
     <>
       {isMobile ? (
-        <Box p="12px" color="bodyText">
-          If your web browser doesn't have a PDF plugin you can instead{" "}
-          <Link color="blue.500" href={filename}>
-            click here to view the PDF file.
-          </Link>
+        <Box>
+          <Text p="12px" color="bodyText">
+            If your web browser doesn't have a PDF plugin you can instead{" "}
+            <Link color="blue.500" href={filename}>
+              click here to view the PDF file.
+            </Link>
+          </Text>
         </Box>
       ) : (
         <></>
@@ -48,7 +50,7 @@ const Index = () => {
         fontSize={{ base: "xl", md: "2xl" }}
         lineHeight="1"
         letterSpacing={{ base: "normal", md: "tight" }}
-        color="white"
+        color="bodyText"
         textAlign="center"
       >
         The{" "}

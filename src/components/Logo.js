@@ -5,11 +5,6 @@ export const Logo = (props) => {
     <Box {...props}>
       <VStack>
         <Box
-          _focus={{}}
-          _active={{}}
-          _highlighted={{}}
-          _grabbed={{}}
-          _pressed={{}}
           minH="45px"
           minW="188px"
         >
