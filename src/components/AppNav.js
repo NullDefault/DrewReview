@@ -4,6 +4,7 @@ import {
   DrawerContent,
   DrawerOverlay,
   Flex,
+    Collapse,
   IconButton,
   Icon,
   useColorModeValue,
@@ -22,11 +23,13 @@ import { useYear } from "../lib/year";
 import { VStack } from "@chakra-ui/layout";
 import { useRouter } from "next/router";
 import data from "../archives.json";
+import {MdKeyboardArrowRight} from "react-icons/md";
 
 export default function AppNav({ children }) {
   const sidebar = useDisclosure();
   const router = useRouter();
   const yearContext = useYear();
+  const integrations = useDisclosure();
 
   const yearSelect =
     router.pathname === "/" ? (
@@ -54,7 +57,7 @@ export default function AppNav({ children }) {
     );
 
   const NavItem = (props) => {
-    const { icon, children, to = "/", ...rest } = props;
+    const { icon, children, to = "", ...rest } = props;
     return (
       <Link href={to} passHref>
         <a>
@@ -122,15 +125,25 @@ export default function AppNav({ children }) {
           <Box px={7} py={5}>
             {yearSelect}
           </Box>
-          <NavItem icon={BsInfoSquareFill} to="/about">
-            About
-          </NavItem>
           <NavItem icon={GiBookshelf} to="/">
             Archives
           </NavItem>
-          <NavItem icon={GiTrumpetFlag} to="/callForPapers">
+          <NavItem icon={GiTrumpetFlag} onClick={integrations.onToggle}>
             Call for Papers
+            <Icon
+                as={MdKeyboardArrowRight}
+                ml="auto"
+                transform={integrations.isOpen && "rotate(90deg)"}
+            />
           </NavItem>
+          <Collapse in={integrations.isOpen}>
+            <NavItem pl="12" py="2" to="/submitPaper">
+              Students
+            </NavItem>
+            <NavItem pl="12" py="2" to="/submitReview">
+              Faculty
+            </NavItem>
+          </Collapse>
           <NavItem icon={RiTeamFill} to="/boardApplications">
             Board Applications
           </NavItem>

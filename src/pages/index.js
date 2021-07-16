@@ -8,7 +8,7 @@ const Index = () => {
   // There is no issue 0, as the first issue is for the year 2008 and is titled DrewReview_V1.pdf
   // Consequently, to get the right version number, you need to take the query year and subtract 2007 from it
   const yearContext = useYear();
-  const filename = `/DrewReview_V${yearContext.year - 2007}.pdf`;
+  const filename = `/archives/DrewReview_V${yearContext.year - 2007}.pdf`;
 
   const pdfView = (
     <Box
@@ -42,6 +42,29 @@ const Index = () => {
         <></>
       )}
       <VStack>{pdfView}</VStack>
+      <Text
+        py={24}
+        px={{ base: 24, md: 48 }}
+        fontSize={{ base: "xl", md: "2xl" }}
+        lineHeight="1"
+        letterSpacing={{ base: "normal", md: "tight" }}
+        color="white"
+        textAlign="center"
+      >
+        The{" "}
+        <Text
+          display={{ base: "block", lg: "inline" }}
+          w="full"
+          color="blue.600"
+          fontWeight="semibold"
+        >
+          Drew Review
+        </Text>{" "}
+        is the annual research journal for the undergraduates of the Drew
+        University College of Liberal Arts, publishing undergraduate research
+        from the previous calendar year. Our mission is to showcase the
+        intellectual vibrancy of the students of the College of Liberal Arts.
+      </Text>
     </>
   );
 };

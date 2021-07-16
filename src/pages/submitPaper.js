@@ -1,7 +1,7 @@
 import { Box, chakra, SimpleGrid, VStack, Link } from "@chakra-ui/react";
 import React from "react";
 
-const CallForPapers = () => {
+const SubmitPaper = () => {
   return (
     <>
       <VStack minH="100vh" justify="center">
@@ -123,4 +123,4 @@ const CallForPapers = () => {
   );
 };
 
-export default CallForPapers;
+export default SubmitPaper;
