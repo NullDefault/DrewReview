@@ -32,7 +32,7 @@ const Index = () => {
   return (
     <>
       {isMobile ? (
-        <Text p="12px" color="white">
+        <Text p="12px" color="bodyText">
           If your web browser doesn't have a PDF plugin you can instead{" "}
           <Link color="blue.500" href={filename}>
             click here to view the PDF file.

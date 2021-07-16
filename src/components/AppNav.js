@@ -114,7 +114,6 @@ export default function AppNav({ children }) {
         as="nav"
         fontSize="md"
         aria-label="Main Navigation"
-        height="70vh"
       >
         <Box>
           <Box px={7} py={5} bg="white">
