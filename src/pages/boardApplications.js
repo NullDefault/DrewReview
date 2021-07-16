@@ -8,7 +8,6 @@ import {
   ListIcon,
   ListItem,
   Stack,
-  useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
 import { BsFileRichtext } from "react-icons/bs";
@@ -36,7 +35,7 @@ const BoardApplications = () => {
               fontSize={{ base: "3xl", sm: "4xl" }}
               fontWeight="extrabold"
               lineHeight="shorter"
-              color="white"
+              color="bodyText"
               mb={6}
             >
               <chakra.span display="block">
@@ -49,7 +48,7 @@ const BoardApplications = () => {
             <chakra.p
               mb={6}
               fontSize={{ base: "xl", md: "2xl" }}
-              color={useColorModeValue("gray.100", "gray.300")}
+              color="bodyText"
             >
               To apply, please submit the following:
               <List spacing={3}>
@@ -86,13 +85,10 @@ const BoardApplications = () => {
                   py={3}
                   fontWeight="bold"
                   w="full"
-                  rounded="md"
                   color="white"
-                  bg="gray.700"
-                  border="2px"
-                  borderColor="gray.600"
+                  bg="drewBlue.800"
                   _hover={{
-                    bg: "gray.800",
+                    bg: "drewBlue.700",
                   }}
                   href="mailto:hwells@drew.edu"
                 >

@@ -13,18 +13,15 @@ export const Logo = (props) => {
         >
           <a href="https://www.drew.edu/1/" target="_blank">
             <Image
-              src="/logo-print.png"
+              src="/Drew_University_logo.svg"
               href="https://www.drew.edu/library/2019/08/19/drew-publications/"
-              style={{
-                filter: "invert(1)",
-              }}
             />
           </a>
         </Box>
 
         <Center>
           <Text
-            color="white"
+            color="drewBlue.800"
             fontSize={{ base: "md", sm: "xl" }}
             fontWeight="light"
             textTransform="uppercase"

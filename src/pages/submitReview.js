@@ -15,7 +15,7 @@ const SubmitReview = () => {
           <chakra.h2
             fontSize={{ base: "2xl", sm: "3xl" }}
             lineHeight="shorter"
-            color="white"
+            color="bodyText"
             textAlign="center"
           >
             <chakra.span
@@ -23,17 +23,18 @@ const SubmitReview = () => {
               textAlign="left"
               fontWeight="semibold"
               pb={6}
+              color="drewBlue.800"
             >
               Dear Faculty Reviewer,
             </chakra.span>
-            <chakra.span display="block" color="gray.400">
+            <chakra.span display="block">
               The Editorial Board thanks you for reviewing the provided article.
               The review is part of a double-blind review process in which the
               identity of the authors and the reviewers are masked. We ask that
               you make all comments on this form, and not on the manuscript
               itself.
             </chakra.span>
-            <chakra.span display="block" color="gray.400" py={6}>
+            <chakra.span display="block" py={6}>
               The Drew Review is targeting high quality, creative research
               papers approximately ten pages or more in length. The papers
               should be ‘A’ quality and have original and interesting theses.
@@ -46,7 +47,7 @@ const SubmitReview = () => {
               . In reviewing the paper, please assess the quality of the writing
               and content for possible publication.
             </chakra.span>
-            <chakra.span display="block" color="gray.400" py={6}>
+            <chakra.span display="block" py={6}>
               The form will prompt you to rank the paper on specific qualities
               we find important for published work, as well as request your
               official recommendation about the work and any specific comments
@@ -54,7 +55,6 @@ const SubmitReview = () => {
             </chakra.span>
             <chakra.span
               display="block"
-              color="gray.300"
               py={6}
               fontSize={{ base: "xl", sm: "2xl" }}
             >
@@ -79,13 +79,10 @@ const SubmitReview = () => {
               py={3}
               fontWeight="bold"
               w="full"
-              rounded="md"
               color="white"
-              bg="gray.700"
-              border="2px"
-              borderColor="gray.600"
+              bg="drewBlue.800"
               _hover={{
-                bg: "gray.800",
+                bg: "drewBlue.700",
               }}
               href="mailto:hwells@drew.edu"
             >

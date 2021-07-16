@@ -44,7 +44,7 @@ const Index = () => {
       <VStack>{pdfView}</VStack>
       <Text
         py={24}
-        px={{ base: 24, md: 48 }}
+        px={{ base: 18, md: 48 }}
         fontSize={{ base: "xl", md: "2xl" }}
         lineHeight="1"
         letterSpacing={{ base: "normal", md: "tight" }}

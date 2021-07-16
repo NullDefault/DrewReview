@@ -4,26 +4,24 @@ import {
   DrawerContent,
   DrawerOverlay,
   Flex,
-    Collapse,
+  Collapse,
   IconButton,
   Icon,
-  useColorModeValue,
   useDisclosure,
   Select,
   Image,
 } from "@chakra-ui/react";
 import { RiTeamFill } from "react-icons/ri";
-import { BsInfoSquareFill } from "react-icons/bs";
 import { GiBookshelf, GiTrumpetFlag } from "react-icons/gi";
 import { FiMenu } from "react-icons/fi";
 import { Logo } from "./Logo";
 import Link from "next/link";
-import { TriangleDownIcon } from "@chakra-ui/icons";
+import { GoTriangleDown } from "react-icons/go";
 import { useYear } from "../lib/year";
 import { VStack } from "@chakra-ui/layout";
 import { useRouter } from "next/router";
 import data from "../archives.json";
-import {MdKeyboardArrowRight} from "react-icons/md";
+import { MdKeyboardArrowRight } from "react-icons/md";
 
 export default function AppNav({ children }) {
   const sidebar = useDisclosure();
@@ -33,25 +31,33 @@ export default function AppNav({ children }) {
 
   const yearSelect =
     router.pathname === "/" ? (
-      <Box>
-        <Select
-          placeholder="Select year"
-          icon={<TriangleDownIcon />}
-          variant="filled"
-          color="white"
-          borderColor="gray.700"
-          focusBorderColor="gray.600"
-          size="lg"
-          value={yearContext.year}
-          onChange={(e) => {
-            yearContext.setYear(e.target.value);
-          }}
-        >
-          {data.years.map(
-              year => <option value={parseInt(year)}>{year}</option>
-          )}
-        </Select>
-      </Box>
+      <Select
+        placeholder="Pick Year"
+        icon={<GoTriangleDown />}
+        fontWeight="extrabold"
+        color="drewBlue.800"
+        borderColor="borderGray"
+        bg="white"
+        border="5px solid"
+        borderRadius="none"
+        size="lg"
+        value={yearContext.year}
+        onChange={(e) => {
+          yearContext.setYear(e.target.value);
+        }}
+        _focus={{
+          color: "drewBlue.700",
+          bg: "white",
+        }}
+        _hover={{
+          color: "drewBlue.700",
+          bg: "white",
+        }}
+      >
+        {data.years.map((year) => (
+          <option value={parseInt(year)}>{year}</option>
+        ))}
+      </Select>
     ) : (
       <></>
     );
@@ -66,26 +72,16 @@ export default function AppNav({ children }) {
             pl="8"
             py="3"
             cursor="pointer"
-            color={useColorModeValue("inherit", "gray.400")}
+            color="drewBlue.800"
             _hover={{
-              bg: useColorModeValue("gray.100", "gray.900"),
-              color: useColorModeValue("gray.900", "gray.200"),
+              bg: "menuGray",
             }}
             role="group"
             fontWeight="semibold"
             transition=".15s ease"
             {...rest}
           >
-            {icon && (
-              <Icon
-                mr="2"
-                boxSize="4"
-                _groupHover={{
-                  color: useColorModeValue("gray.600", "gray.300"),
-                }}
-                as={icon}
-              />
-            )}
+            {icon && <Icon mr="2" boxSize="4" as={icon} />}
             {children}
           </Flex>
         </a>
@@ -104,25 +100,24 @@ export default function AppNav({ children }) {
       pb="10"
       overflowX="hidden"
       overflowY="auto"
-      bg={useColorModeValue("white", "gray.800")}
-      borderColor={useColorModeValue("inherit", "gray.900")}
-      borderRightWidth="6px"
+      bg="white"
       w="60"
+      border="6px solid"
+      borderColor="menuGray"
       {...props}
     >
       <Flex px="6" align="center">
-        <Logo px="3" pt="8" />
+        <Logo pt="8" />
       </Flex>
       <Flex
         direction="column"
         as="nav"
-        fontSize="sm"
-        color="gray.600"
+        fontSize="md"
         aria-label="Main Navigation"
         height="70vh"
       >
         <Box>
-          <Box px={7} py={5}>
+          <Box px={7} py={5} bg="white">
             {yearSelect}
           </Box>
           <NavItem icon={GiBookshelf} to="/">
@@ -131,9 +126,9 @@ export default function AppNav({ children }) {
           <NavItem icon={GiTrumpetFlag} onClick={integrations.onToggle}>
             Call for Papers
             <Icon
-                as={MdKeyboardArrowRight}
-                ml="auto"
-                transform={integrations.isOpen && "rotate(90deg)"}
+              as={MdKeyboardArrowRight}
+              ml="auto"
+              transform={integrations.isOpen && "rotate(90deg)"}
             />
           </NavItem>
           <Collapse in={integrations.isOpen}>
@@ -148,23 +143,21 @@ export default function AppNav({ children }) {
             Board Applications
           </NavItem>
         </Box>
-        <Flex direction="column" width="full" position="absolute" bottom="12">
+        <Flex direction="column" width="full" position="absolute" bottom="6">
           <VStack spacing="24px" mx="auto" width="full">
             <Box w={{ base: "75px", sm: "100px" }}>
               <Image src="/favicon.ico" />
             </Box>
-            <Box color="white">© 2021 Drew University</Box>
+            <Box fontWeight="semibold" color="drewBlue.800">
+              © 2021 Drew University
+            </Box>
           </VStack>
         </Flex>
       </Flex>
     </Box>
   );
   return (
-    <Box
-      as="section"
-      bg={useColorModeValue("gray.50", "gray.700")}
-      minH="100vh"
-    >
+    <Box as="section" bg="menuGray" minH="100vh">
       <SidebarContent display={{ base: "none", md: "unset" }} />
       <Drawer
         isOpen={sidebar.isOpen}
@@ -183,15 +176,17 @@ export default function AppNav({ children }) {
           justify="space-between"
           w="full"
           px="4"
-          bg={useColorModeValue("white", "gray.800")}
-          borderBottomWidth="1px"
-          borderColor={useColorModeValue("inherit", "gray.700")}
+          bg="drewBlue.800"
         >
           <IconButton
             aria-label="Menu"
             display={{ base: "inline-flex", md: "none" }}
             onClick={sidebar.onOpen}
             icon={<FiMenu />}
+            bg="drewBlue.700"
+            _hover={{
+              bg: "drewBlue.600",
+            }}
             color="white"
             size="md"
             my="4"

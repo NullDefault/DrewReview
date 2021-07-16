@@ -15,20 +15,19 @@ const SubmitPaper = () => {
             fontSize={{ base: "3xl", sm: "4xl" }}
             fontWeight="extrabold"
             lineHeight="shorter"
-            color="white"
+            color="bodyText"
             textAlign="center"
           >
             <chakra.span display="block">
               Did you write a final research paper this semester that you would
               like to publish?
             </chakra.span>
-            <chakra.span display="block" color="gray.400">
+            <chakra.span display="block" color="drewBlue.800">
               Submit it to The Drew Review now!
             </chakra.span>
           </chakra.h2>
           <chakra.p
             fontSize={{ base: "xl", md: "2xl" }}
-            color="white"
             my={6}
             textAlign="center"
           >
@@ -50,7 +49,6 @@ const SubmitPaper = () => {
                 fontSize={{ base: "3xl", md: "4xl" }}
                 fontWeight="extrabold"
                 textAlign={{ base: "center", sm: "left" }}
-                color="white"
                 lineHeight="shorter"
                 letterSpacing="tight"
               >
@@ -60,10 +58,9 @@ const SubmitPaper = () => {
                 mb={6}
                 fontSize={{ base: "lg", md: "xl" }}
                 textAlign={{ base: "center", sm: "left" }}
-                color="gray.500"
               >
-                Students may be asked to make revisions. <br /> The author’s name and
-                any other identifying information should be removed.
+                Students may be asked to make revisions. <br /> The author’s
+                name and any other identifying information should be removed.
               </chakra.p>
             </Box>
             <VStack
@@ -73,22 +70,13 @@ const SubmitPaper = () => {
               alignItems="center"
             >
               <chakra.ul>
-                <chakra.li
-                  fontSize={{ base: "3xl", md: "4xl" }}
-                  color="gray.400"
-                >
+                <chakra.li fontSize={{ base: "3xl", md: "4xl" }}>
                   Any Language
                 </chakra.li>
-                <chakra.li
-                  fontSize={{ base: "3xl", md: "4xl" }}
-                  color="gray.400"
-                >
+                <chakra.li fontSize={{ base: "3xl", md: "4xl" }}>
                   Any Discipline
                 </chakra.li>
-                <chakra.li
-                  fontSize={{ base: "3xl", md: "4xl" }}
-                  color="gray.400"
-                >
+                <chakra.li fontSize={{ base: "3xl", md: "4xl" }}>
                   Word Document
                 </chakra.li>
               </chakra.ul>
@@ -97,7 +85,6 @@ const SubmitPaper = () => {
 
           <chakra.p
             fontSize={{ base: "xl", md: "2xl" }}
-            color="gray.400"
             my={12}
             px={12}
             textAlign="center"
@@ -108,7 +95,6 @@ const SubmitPaper = () => {
           </chakra.p>
           <chakra.p
             fontSize={{ base: "xl", md: "2xl" }}
-            color="white"
             my={6}
             textAlign="center"
           >
