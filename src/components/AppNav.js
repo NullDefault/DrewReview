@@ -163,7 +163,7 @@ export default function AppNav({ children }) {
             Board Applications
           </NavItem>
         </Box>
-        <Spacer />
+        <Spacer minH="36px"/>
         <Flex direction="column">
           <VStack spacing="24px">
             <Box w={{ base: "75px", sm: "100px" }}>
