@@ -2,7 +2,6 @@ import {
   Box,
   chakra,
   Flex,
-  Icon,
   Image,
   List,
   ListIcon,
@@ -10,21 +9,25 @@ import {
   Stack,
   VStack,
 } from "@chakra-ui/react";
-import { BsFileRichtext } from "react-icons/bs";
-import { GiLetterBomb } from "react-icons/gi";
-import { FaChalkboardTeacher } from "react-icons/fa";
-import { BiMailSend } from "react-icons/bi";
+import React from "react";
+import { MdCheckCircle } from "react-icons/md";
 
 const BoardApplications = () => {
   return (
-    <>
-      <VStack minH="100vh" alignItems="center" justify="center">
+    <Box
+      border="5px solid"
+      borderColor="black"
+      mx="7vw"
+      p="1rem"
+      bg="white"
+      mt="1rem"
+    >
+      <VStack alignItems="center" justify="center" bg="#1379B0" minH="90vh">
         <Flex
           direction={{ base: "column", lg: "row" }}
-          px={{ base: 12, lg: 24 }}
-          pb={24}
-          mt={{ base: 12, xl: 32 }}
           mx="auto"
+          px="10vw"
+          py="5vh"
         >
           <Box
             w={{ base: "full", md: 11 / 12, xl: 9 / 12 }}
@@ -32,84 +35,76 @@ const BoardApplications = () => {
             pr={{ md: 20 }}
           >
             <chakra.h2
-              fontSize={{ base: "3xl", sm: "4xl" }}
+              fontSize={{ base: "2xl", sm: "3xl" }}
               fontWeight="extrabold"
               lineHeight="shorter"
-              color="bodyText"
+              color="white"
               mb={6}
             >
               <chakra.span display="block">
                 Do you want to serve on the editorial board of The Drew Review?
               </chakra.span>
-              <chakra.span display="block" color="pink.300">
+              <chakra.span display="block">
                 Send an application to be an editor!
               </chakra.span>
             </chakra.h2>
-            <chakra.p
-              mb={6}
-              fontSize={{ base: "xl", md: "2xl" }}
-              color="bodyText"
-            >
+            <chakra.p mb={6} fontSize={{ base: "lg", md: "xl" }} color="white">
               To apply, please submit the following:
-              <List spacing={3}>
+              <List spacing={3} pt={3}>
                 <ListItem>
-                  <ListIcon as={BsFileRichtext} color="pink.400" />A writing
+                  <ListIcon as={MdCheckCircle} color="green.500" />A writing
                   sample incorporating at least 2 scholarly sources and minimum
-                  5 pages in length,
+                  5 pages in length.
                 </ListItem>
                 <ListItem>
-                  <ListIcon as={GiLetterBomb} color="pink.400" />A cover letter
-                  explaining why you would like to serve on the editorial board
-                  of The Drew Review,
+                  <ListIcon as={MdCheckCircle} color="green.500" />A cover
+                  letter explaining why you would like to serve on the editorial
+                  board of The Drew Review.
                 </ListItem>
                 <ListItem>
-                  <ListIcon as={FaChalkboardTeacher} color="pink.400" />
+                  <ListIcon as={MdCheckCircle} color="green.500" />
                   And a nomination from a professor.
-                </ListItem>
-                <ListItem py={3} fontSize={{ base: "lg", md: "xl" }}>
-                  Send application materials to Professor Hannah Wells.
                 </ListItem>
               </List>
             </chakra.p>
-            <Stack
-              direction={{ base: "column", sm: "row" }}
-              mb={{ base: 4, md: 8 }}
-              spacing={2}
-            >
-              <Box display="inline-flex" rounded="md" shadow="md">
-                <chakra.a
-                  display="inline-flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  px={5}
-                  py={3}
-                  fontWeight="bold"
-                  w="full"
-                  color="white"
-                  bg="drewBlue.800"
-                  _hover={{
-                    bg: "drewBlue.700",
-                  }}
-                  href="mailto:hwells@drew.edu"
-                >
-                  Apply Now
-                  <Icon ml="2" as={BiMailSend} />
-                </chakra.a>
-              </Box>
+            <Stack direction={{ base: "column", sm: "row" }} spacing={2}>
+              <chakra.a
+                display="inline-flex"
+                alignItems="center"
+                justifyContent="center"
+                px={5}
+                py={3}
+                fontWeight="extrabold"
+                w="full"
+                color="white"
+                bg="transparent"
+                border="5px solid"
+                borderColor="white"
+                _hover={{
+                  bg: "white",
+                  color: "black",
+                }}
+                style={{
+                  textTransform: "uppercase",
+                  transition:
+                    "background .25s,border .25s,box-shadow .25s,color .25s,transform .25s,-webkit-transform .25s",
+                }}
+                href="mailto:hwells@drew.edu"
+              >
+                Apply Now
+              </chakra.a>
             </Stack>
           </Box>
-          <Box w={{ base: "full", md: 10 / 12 }} mx="auto" textAlign="center">
+          <Box w={{ base: "full", md: 10 / 12 }} my="auto">
             <Image
               w="full"
-              rounded="lg"
-              shadow="2xl"
               src="/placeholderHero.jpg"
               alt="Drew University Pretty Photo"
             />
           </Box>
         </Flex>
       </VStack>
-    </>
+    </Box>
   );
 };
 

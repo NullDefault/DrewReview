@@ -13,7 +13,6 @@ export const Logo = (props) => {
               src="/Drew_University_logo.svg"
               _hover={{}}
               _focus={{}}
-
               href="https://www.drew.edu/library/2019/08/19/drew-publications/"
             />
           </a>

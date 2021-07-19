@@ -12,8 +12,9 @@ const Index = () => {
 
   const pdfView = (
     <Box
-      width={{ base: "90vw", md: "60vw", lg: "70vw", xl: "80vw" }}
+      width={["90vw", "80vw", "65vw", "70vw", "75vw", "80vw"]}
       height="100vh"
+      my="1rem"
     >
       <object
         data={filename}
@@ -21,9 +22,7 @@ const Index = () => {
         style={{
           display: "block",
           width: "100%",
-          height: "100%",
-          paddingTop: "1rem",
-          paddingBottom: "1rem",
+          height: "100%"
         }}
       ></object>
     </Box>
@@ -44,29 +43,31 @@ const Index = () => {
         <></>
       )}
       <VStack>{pdfView}</VStack>
-      <Text
-        py={24}
-        px={{ base: 18, md: 48 }}
-        fontSize={{ base: "xl", md: "2xl" }}
-        lineHeight="1"
-        letterSpacing={{ base: "normal", md: "tight" }}
-        color="bodyText"
-        textAlign="center"
-      >
-        The{" "}
+      <Box bg="white" border="5px solid" borderColor="black" mx="10vw">
         <Text
-          display={{ base: "block", lg: "inline" }}
-          w="full"
-          color="blue.600"
-          fontWeight="semibold"
+          fontSize={{ base: "xl", md: "2xl" }}
+          color="menuGray"
+          textAlign="center"
+          m="15px"
+          p="40px"
+          bg="drewGreen.500"
         >
-          Drew Review
-        </Text>{" "}
-        is the annual research journal for the undergraduates of the Drew
-        University College of Liberal Arts, publishing undergraduate research
-        from the previous calendar year. Our mission is to showcase the
-        intellectual vibrancy of the students of the College of Liberal Arts.
-      </Text>
+          The{" "}
+          <Text
+            display={{ base: "block", lg: "inline" }}
+            w="full"
+            color="white"
+            fontWeight="extrabold"
+          >
+            Drew Review
+          </Text>{" "}
+          is the annual research journal for the undergraduates of the Drew
+          University College of Liberal Arts, publishing undergraduate research
+          from the previous calendar year. Our mission is to showcase the
+          intellectual vibrancy of the students of the College of Liberal Arts.
+        </Text>
+      </Box>
+      <Box h={8} />
     </>
   );
 };

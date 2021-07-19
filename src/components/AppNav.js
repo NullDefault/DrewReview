@@ -10,9 +10,8 @@ import {
   useDisclosure,
   Select,
   Image,
+  Spacer,
 } from "@chakra-ui/react";
-import { RiTeamFill } from "react-icons/ri";
-import { GiBookshelf, GiTrumpetFlag } from "react-icons/gi";
 import { FiMenu } from "react-icons/fi";
 import { Logo } from "./Logo";
 import Link from "next/link";
@@ -69,7 +68,7 @@ export default function AppNav({ children }) {
         <a>
           <Flex
             align="center"
-            pl="8"
+            pl="3"
             py="3"
             cursor="pointer"
             color="drewBlue.800"
@@ -96,33 +95,41 @@ export default function AppNav({ children }) {
       top="0"
       left="0"
       zIndex="sticky"
-      h="full"
       pb="10"
+      h="full"
       overflowX="hidden"
-      overflowY="auto"
+      overflowY="hidden"
       bg="white"
-      w="60"
-      border="6px solid"
-      borderColor="menuGray"
+      w={64}
       {...props}
     >
-      <Flex px="6" align="center">
-        <Logo pt="8" />
-      </Flex>
+      <Logo pt="8" px={6}/>
       <Flex
         direction="column"
         as="nav"
+        h={["60vh", "80vh"]}
         fontSize="md"
         aria-label="Main Navigation"
+        px={6}
       >
         <Box>
-          <Box px={7} py={5} bg="white">
+          <Box py={5} bg="white">
             {yearSelect}
           </Box>
-          <NavItem icon={GiBookshelf} to="/">
+          <NavItem
+            to="/"
+            borderTop="6px solid"
+            borderX="6px solid"
+            borderColor="menuGray"
+          >
             Archives
           </NavItem>
-          <NavItem icon={GiTrumpetFlag} onClick={integrations.onToggle}>
+          <NavItem
+            onClick={integrations.onToggle}
+            borderTop="6px solid"
+            borderX="6px solid"
+            borderColor="menuGray"
+          >
             Call for Papers
             <Icon
               as={MdKeyboardArrowRight}
@@ -131,19 +138,34 @@ export default function AppNav({ children }) {
             />
           </NavItem>
           <Collapse in={integrations.isOpen}>
-            <NavItem pl="12" py="2" to="/submitPaper">
+            <NavItem
+              py="2"
+              to="/submitPaper"
+              borderX="6px solid"
+              borderColor="menuGray"
+            >
               Students
             </NavItem>
-            <NavItem pl="12" py="2" to="/submitReview">
+            <NavItem
+              py="2"
+              to="/submitReview"
+              borderX="6px solid"
+              borderColor="menuGray"
+            >
               Faculty
             </NavItem>
           </Collapse>
-          <NavItem icon={RiTeamFill} to="/boardApplications">
+          <NavItem
+            to="/boardApplications"
+            border="6px solid"
+            borderColor="menuGray"
+          >
             Board Applications
           </NavItem>
         </Box>
-        <Flex direction="column" width="full" position="absolute" bottom="6">
-          <VStack spacing="24px" mx="auto" width="full">
+        <Spacer />
+        <Flex direction="column">
+          <VStack spacing="24px">
             <Box w={{ base: "75px", sm: "100px" }}>
               <Image src="/favicon.ico" />
             </Box>
@@ -156,7 +178,7 @@ export default function AppNav({ children }) {
     </Box>
   );
   return (
-    <Box as="section" bg="menuGray" minH="100vh">
+    <Box as="section" bg="drewBlue.800" minH="100vh">
       <SidebarContent display={{ base: "none", md: "unset" }} />
       <Drawer
         isOpen={sidebar.isOpen}
@@ -191,14 +213,7 @@ export default function AppNav({ children }) {
             my="4"
           />
         </Flex>
-        <Box
-          as="main"
-          style={{
-            backgroundImage: "url('/church-on-sunday.svg')",
-          }}
-        >
-          {children}
-        </Box>
+        <Box as="main">{children}</Box>
       </Box>
     </Box>
   );
