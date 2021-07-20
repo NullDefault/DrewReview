@@ -14,7 +14,7 @@ const Index = () => {
     <Box
       width={["80vw", "80vw", "65vw", "70vw", "75vw", "80vw"]}
       my="1rem"
-      h={["75vh", "97vh"]}
+      h={isMobile ? "500px" : ["75vh", "97vh"]}
       mx="auto"
     >
       <object
@@ -22,7 +22,7 @@ const Index = () => {
         type="application/pdf"
         style={{
           width: "100%",
-          height: isMobile ? (window).height : "95%",
+          height: "100%",
         }}
       />
     </Box>
