@@ -1,29 +1,31 @@
 import { Box, chakra, Icon, VStack } from "@chakra-ui/react";
 import Link from "next/link";
 import { RiArrowRightCircleLine } from "react-icons/ri";
+import React from "react";
 
 const SubmitReview = () => {
   return (
     <>
-      <VStack minH="100vh" justify="center">
-        <Box
-          w={{ base: "full", md: 11 / 12, xl: 9 / 12 }}
-          mx="auto"
-          py={8}
-          px={4}
-        >
+      <VStack
+        justify="center"
+        border="5px solid"
+        borderColor="black"
+        mx="7vw"
+        p="1rem"
+        bg="white"
+        mt="1rem"
+      >
+        <Box mx="auto" bg="drewBlue.600" px="10vw" py="5vh">
           <chakra.h2
-            fontSize={{ base: "2xl", sm: "3xl" }}
-            lineHeight="shorter"
-            color="bodyText"
+            fontSize={{ base: "xl", sm: "2xl" }}
+            color="white"
             textAlign="center"
           >
             <chakra.span
               display="block"
               textAlign="left"
-              fontWeight="semibold"
+              fontWeight="extrabold"
               pb={6}
-              color="drewBlue.800"
             >
               Dear Faculty Reviewer,
             </chakra.span>
@@ -41,8 +43,8 @@ const SubmitReview = () => {
               Furthermore, if you would like an example of past published papers
               we can send you an example for reference, or you can read past
               issues{" "}
-              <chakra.span color="blue.500">
-                <Link href="/">here</Link>
+              <chakra.span color="drewBlue.200">
+                <Link href="/"><u>here</u></Link>
               </chakra.span>
               . In reviewing the paper, please assess the quality of the writing
               and content for possible publication.
@@ -62,36 +64,43 @@ const SubmitReview = () => {
               independent study, we would love to see paper submissions from
               them in the future. Thank you so much for reviewing the paper for
               us. If you have any questions feel free to contact{" "}
-              <chakra.span color="blue.500">
+              <chakra.span color="drewBlue.200">
                 <Link href="mailto:drewreview@drew.edu">
-                  drewreview@drew.edu
+                  <u>drewreview@drew.edu</u>
                 </Link>
               </chakra.span>
               .
             </chakra.span>
           </chakra.h2>
-          <Box display="block" rounded="md" shadow="md">
-            <chakra.a
-              display="inline-flex"
-              alignItems="center"
-              justifyContent="center"
-              px={5}
-              py={3}
-              fontWeight="bold"
-              w="full"
-              color="white"
-              bg="drewBlue.800"
-              _hover={{
-                bg: "drewBlue.700",
-              }}
-              href="mailto:hwells@drew.edu"
-            >
-              Proceed to Form
-              <Icon ml="2" as={RiArrowRightCircleLine} />
-            </chakra.a>
-          </Box>
+          <chakra.a
+            display="inline-flex"
+            alignItems="center"
+            justifyContent="center"
+            px={5}
+            py={3}
+            fontWeight="extrabold"
+            w="full"
+            color="white"
+            bg="transparent"
+            border="5px solid"
+            borderColor="white"
+            _hover={{
+              bg: "white",
+              color: "black",
+            }}
+            style={{
+              textTransform: "uppercase",
+              transition:
+                "background .25s,border .25s,box-shadow .25s,color .25s,transform .25s,-webkit-transform .25s",
+            }}
+            href="mailto:hwells@drew.edu"
+          >
+            Proceed to Form
+            <Icon ml="2" as={RiArrowRightCircleLine} />
+          </chakra.a>
         </Box>
       </VStack>
+      <Box h="2rem"/>
     </>
   );
 };

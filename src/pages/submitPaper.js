@@ -1,28 +1,29 @@
-import { Box, chakra, SimpleGrid, VStack, Link } from "@chakra-ui/react";
+import { Box, chakra, SimpleGrid, VStack } from "@chakra-ui/react";
 import React from "react";
 
 const SubmitPaper = () => {
   return (
     <>
-      <VStack minH="100vh" justify="center">
-        <Box
-          w={{ base: "full", md: 11 / 12, xl: 9 / 12 }}
-          mx="auto"
-          py={8}
-          px={4}
-        >
+      <VStack
+        border="5px solid"
+        borderColor="black"
+        mx="7vw"
+        p="1rem"
+        bg="white"
+        mt="3rem"
+      >
+        <Box mx="auto" bg="drewBlue.600" px="10vw" py="5vh" color="white">
           <chakra.h2
-            fontSize={{ base: "3xl", sm: "4xl" }}
+            fontSize={{ base: "2xl", sm: "3xl" }}
             fontWeight="extrabold"
             lineHeight="shorter"
-            color="bodyText"
             textAlign="center"
           >
             <chakra.span display="block">
               Did you write a final research paper this semester that you would
               like to publish?
             </chakra.span>
-            <chakra.span display="block" color="drewBlue.800">
+            <chakra.span display="block">
               Submit it to The Drew Review now!
             </chakra.span>
           </chakra.h2>
@@ -41,16 +42,14 @@ const SubmitPaper = () => {
             columns={{ base: 1, lg: 2 }}
             spacingY={{ base: 10, lg: 32 }}
             spacingX={{ base: 10, lg: 24 }}
-            p={8}
           >
             <Box>
               <chakra.h2
                 mb={3}
-                fontSize={{ base: "3xl", md: "4xl" }}
+                fontSize={{ base: "2xl", md: "3xl" }}
                 fontWeight="extrabold"
                 textAlign={{ base: "center", sm: "left" }}
                 lineHeight="shorter"
-                letterSpacing="tight"
               >
                 Guidelines for Submission
               </chakra.h2>
@@ -86,25 +85,40 @@ const SubmitPaper = () => {
           <chakra.p
             fontSize={{ base: "xl", md: "2xl" }}
             my={12}
-            px={12}
             textAlign="center"
           >
             In addition, submissions to The Drew Review require a faculty
             nomination. Students who believe their work is exceptional should
             approach their professor to nominate them.
           </chakra.p>
-          <chakra.p
-            fontSize={{ base: "xl", md: "2xl" }}
-            my={6}
-            textAlign="center"
+          <chakra.a
+            display="inline-flex"
+            alignItems="center"
+            justifyContent="center"
+            px={5}
+            py={3}
+            fontWeight="extrabold"
+            w="full"
+            color="white"
+            bg="transparent"
+            border="5px solid"
+            borderColor="white"
+            _hover={{
+              bg: "white",
+              color: "black",
+            }}
+            style={{
+              textTransform: "uppercase",
+              transition:
+                "background .25s,border .25s,box-shadow .25s,color .25s,transform .25s,-webkit-transform .25s",
+            }}
+            href="mailto:hwells@drew.edu"
           >
-            Send submissions as an e-mail attachment and nominations to{" "}
-            <Link color="blue.500" href="#mailto:drewreview@drew.edu">
-              drewreview@drew.edu
-            </Link>
-          </chakra.p>
+            Apply Now
+          </chakra.a>
         </Box>
       </VStack>
+      <Box h="2rem" />
     </>
   );
 };

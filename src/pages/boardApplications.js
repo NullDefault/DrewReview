@@ -22,9 +22,14 @@ const BoardApplications = () => {
       bg="white"
       mt="1rem"
     >
-      <VStack alignItems="center" justify="center" bg="#1379B0" minH="90vh">
+      <VStack
+        alignItems="center"
+        justify="center"
+        bg="drewTeal.600"
+        minH="90vh"
+      >
         <Flex
-          direction={{ base: "column", lg: "row" }}
+          direction={{ base: "column", xl: "row" }}
           mx="auto"
           px="10vw"
           py="5vh"
@@ -33,6 +38,7 @@ const BoardApplications = () => {
             w={{ base: "full", md: 11 / 12, xl: 9 / 12 }}
             mx="auto"
             pr={{ md: 20 }}
+            textAlign={{base: "center", xl: "left"}}
           >
             <chakra.h2
               fontSize={{ base: "2xl", sm: "3xl" }}
@@ -67,37 +73,33 @@ const BoardApplications = () => {
                 </ListItem>
               </List>
             </chakra.p>
-            <Stack direction={{ base: "column", sm: "row" }} spacing={2}>
-              <chakra.a
-                display="inline-flex"
-                alignItems="center"
-                justifyContent="center"
-                px={5}
-                py={3}
-                fontWeight="extrabold"
-                w="full"
-                color="white"
-                bg="transparent"
-                border="5px solid"
-                borderColor="white"
-                _hover={{
-                  bg: "white",
-                  color: "black",
-                }}
-                style={{
-                  textTransform: "uppercase",
-                  transition:
-                    "background .25s,border .25s,box-shadow .25s,color .25s,transform .25s,-webkit-transform .25s",
-                }}
-                href="mailto:hwells@drew.edu"
-              >
-                Apply Now
-              </chakra.a>
-            </Stack>
-          </Box>
-          <Box w={{ base: "full", md: 10 / 12 }} my="auto">
-            <Image
+            <chakra.a
+              display="inline-flex"
+              alignItems="center"
+              justifyContent="center"
+              px={5}
+              py={3}
+              fontWeight="extrabold"
               w="full"
+              color="white"
+              bg="transparent"
+              border="5px solid"
+              borderColor="white"
+              _hover={{
+                bg: "white",
+                color: "black",
+              }}
+              style={{
+                textTransform: "uppercase",
+                transition:
+                  "background .25s,border .25s,box-shadow .25s,color .25s,transform .25s,-webkit-transform .25s",
+              }}
+            >
+              Apply Now
+            </chakra.a>
+          </Box>
+          <Box w="full" mt={{base: "3rem", xl: "10%"}}>
+            <Image
               src="/placeholderHero.jpg"
               alt="Drew University Pretty Photo"
             />

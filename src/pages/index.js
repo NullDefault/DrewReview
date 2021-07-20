@@ -30,7 +30,7 @@ const Index = () => {
 
   const mobileLink = isMobile ? (
     <Box bg="white" border="5px solid" borderColor="black" mx="10vw">
-      <Text p="12px" color="white" bg="drewTeal.500" p="40px" m="15px">
+      <Text color="white" bg="drewTeal.600" p="40px" m="15px">
         If your web browser doesn't have a PDF plugin you can instead{" "}
         <Link color="drewBlue.800" fontWeight="semibold" href={filename}>
           click here to view the PDF file.
