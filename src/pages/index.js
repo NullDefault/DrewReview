@@ -14,7 +14,7 @@ const Index = () => {
     <Box
       width={["80vw", "80vw", "65vw", "70vw", "75vw", "80vw"]}
       my="1rem"
-      h={["500px", "920px"]}
+      h={["550px", "920px"]}
       mx="auto"
     >
       <object
@@ -29,10 +29,10 @@ const Index = () => {
   );
 
   const mobileLink = isMobile ? (
-    <Box>
-      <Text p="12px" color="white">
+    <Box bg="white" border="5px solid" borderColor="black" mx="10vw">
+      <Text p="12px" color="white" bg="drewTeal.500" p="40px" m="15px">
         If your web browser doesn't have a PDF plugin you can instead{" "}
-        <Link color="blue.300" href={filename}>
+        <Link color="drewBlue.800" fontWeight="semibold" href={filename}>
           click here to view the PDF file.
         </Link>
       </Text>
@@ -74,7 +74,7 @@ const Index = () => {
           intellectual vibrancy of the students of the College of Liberal Arts.
         </Text>
       </Box>
-      <Box h="2rem"/>
+      <Box h="2rem" />
     </Box>
   );
 };
