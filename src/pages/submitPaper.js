@@ -1,5 +1,6 @@
-import { Box, chakra, SimpleGrid, VStack } from "@chakra-ui/react";
+import {Box, chakra, List, ListIcon, ListItem, SimpleGrid, VStack} from "@chakra-ui/react";
 import React from "react";
+import {MdCheckCircle} from "react-icons/md";
 
 const SubmitPaper = () => {
   return (
@@ -10,9 +11,9 @@ const SubmitPaper = () => {
         mx="7vw"
         p="1rem"
         bg="white"
-        mt="3rem"
+        mt="5%"
       >
-        <Box mx="auto" bg="drewBlue.600" px="10vw" py="5vh" color="white">
+        <Box mx="auto" bg="drewBlue.600" px={{base: "4vw", xl: "10vw"}} py="5vh" color="white">
           <chakra.h2
             fontSize={{ base: "2xl", sm: "3xl" }}
             fontWeight="extrabold"
@@ -54,7 +55,6 @@ const SubmitPaper = () => {
                 Guidelines for Submission
               </chakra.h2>
               <chakra.p
-                mb={6}
                 fontSize={{ base: "lg", md: "xl" }}
                 textAlign={{ base: "center", sm: "left" }}
               >
@@ -67,18 +67,23 @@ const SubmitPaper = () => {
               flexGrow={1}
               spacing={5}
               alignItems="center"
+              fontSize={{ base: "3xl", md: "2xl" }}
+              textAlign={{ base: "center", sm: "left" }}
             >
-              <chakra.ul>
-                <chakra.li fontSize={{ base: "3xl", md: "4xl" }}>
+              <List spacing={3}>
+                <ListItem>
+                  <ListIcon as={MdCheckCircle} color="green.500" />
                   Any Language
-                </chakra.li>
-                <chakra.li fontSize={{ base: "3xl", md: "4xl" }}>
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={MdCheckCircle} color="green.500" />
                   Any Discipline
-                </chakra.li>
-                <chakra.li fontSize={{ base: "3xl", md: "4xl" }}>
+                </ListItem>
+                <ListItem>
+                  <ListIcon as={MdCheckCircle} color="green.500" />
                   Word Document
-                </chakra.li>
-              </chakra.ul>
+                </ListItem>
+              </List>
             </VStack>
           </SimpleGrid>
 
