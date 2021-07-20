@@ -1,4 +1,4 @@
-import { Box, Text, Link, VStack } from "@chakra-ui/react";
+import { Box, Text, Link } from "@chakra-ui/react";
 import { useYear } from "../lib/year";
 import { isMobile } from "react-device-detect";
 import React from "react";
@@ -12,9 +12,9 @@ const Index = () => {
 
   const pdfView = (
     <Box
-      width={["90vw", "80vw", "65vw", "70vw", "75vw", "80vw"]}
-      height="100vh"
+      width={["80vw", "80vw", "65vw", "70vw", "75vw", "80vw"]}
       my="1rem"
+      h={["75vh", "97vh"]}
       mx="auto"
     >
       <object
@@ -22,7 +22,7 @@ const Index = () => {
         type="application/pdf"
         style={{
           width: "100%",
-          height: "95%",
+          height: isMobile ? (window).height : "95%",
         }}
       />
     </Box>
