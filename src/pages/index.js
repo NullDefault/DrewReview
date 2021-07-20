@@ -14,7 +14,7 @@ const Index = () => {
     <Box
       width={["80vw", "80vw", "65vw", "70vw", "75vw", "80vw"]}
       my="1rem"
-      h={["550px", "920px"]}
+      h={["460px", "920px"]}
       mx="auto"
     >
       <object
