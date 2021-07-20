@@ -103,7 +103,7 @@ export default function AppNav({ children }) {
       w={64}
       {...props}
     >
-      <Logo pt="8" px={6}/>
+      <Logo pt="8" px={6} />
       <Flex
         direction="column"
         as="nav"
@@ -163,7 +163,7 @@ export default function AppNav({ children }) {
             Board Applications
           </NavItem>
         </Box>
-        <Spacer minH="36px"/>
+        <Spacer minH="36px" />
         <Flex direction="column">
           <VStack spacing="24px">
             <Box w={{ base: "75px", sm: "100px" }}>

@@ -32,7 +32,7 @@ const BoardApplications = () => {
           <Flex
             direction={{ base: "column", xl: "row" }}
             mx="auto"
-            px={{base: "4vw", xl: "10vw"}}
+            px={{ base: "4vw", xl: "10vw" }}
             py="5vh"
           >
             <Box

@@ -4,10 +4,7 @@ export const Logo = (props) => {
   return (
     <Box {...props}>
       <VStack>
-        <Box
-          minH="45px"
-          minW="188px"
-        >
+        <Box minH="45px" minW="188px">
           <a href="https://www.drew.edu/1/" target="_blank">
             <Image
               src="/Drew_University_logo.svg"

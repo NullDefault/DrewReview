@@ -1,6 +1,14 @@
-import {Box, chakra, List, ListIcon, ListItem, SimpleGrid, VStack} from "@chakra-ui/react";
+import {
+  Box,
+  chakra,
+  List,
+  ListIcon,
+  ListItem,
+  SimpleGrid,
+  VStack,
+} from "@chakra-ui/react";
 import React from "react";
-import {MdCheckCircle} from "react-icons/md";
+import { MdCheckCircle } from "react-icons/md";
 
 const SubmitPaper = () => {
   return (
@@ -13,7 +21,13 @@ const SubmitPaper = () => {
         bg="white"
         mt="5%"
       >
-        <Box mx="auto" bg="drewBlue.600" px={{base: "4vw", xl: "10vw"}} py="5vh" color="white">
+        <Box
+          mx="auto"
+          bg="drewBlue.600"
+          px={{ base: "4vw", xl: "10vw" }}
+          py="5vh"
+          color="white"
+        >
           <chakra.h2
             fontSize={{ base: "2xl", sm: "3xl" }}
             fontWeight="extrabold"

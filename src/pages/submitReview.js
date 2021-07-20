@@ -44,7 +44,9 @@ const SubmitReview = () => {
               we can send you an example for reference, or you can read past
               issues{" "}
               <chakra.span color="drewBlue.200">
-                <Link href="/"><u>here</u></Link>
+                <Link href="/">
+                  <u>here</u>
+                </Link>
               </chakra.span>
               . In reviewing the paper, please assess the quality of the writing
               and content for possible publication.
@@ -100,7 +102,7 @@ const SubmitReview = () => {
           </chakra.a>
         </Box>
       </VStack>
-      <Box h="2rem"/>
+      <Box h="2rem" />
     </>
   );
 };
