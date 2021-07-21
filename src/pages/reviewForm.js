@@ -25,7 +25,7 @@ const ReviewBlock = ({ title, setValue, value }) => {
         colorScheme="whiteAlpha"
         color="white"
       >
-        <Stack direction="row" justify="space-between" bg="drewTeal.600" p={4}>
+        <Stack direction={{base: "column", lg: "row"}} justify="space-between" bg="drewTeal.600" p={4}>
           <Text>{title}</Text>
           <Stack direction="row">
             <Radio value="1">1</Radio>
