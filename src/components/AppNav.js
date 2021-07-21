@@ -54,7 +54,9 @@ export default function AppNav({ children }) {
         }}
       >
         {data.years.map((year) => (
-          <option value={parseInt(year)}>{year}</option>
+          <option value={parseInt(year)} key={parseInt(year)}>
+            {year}
+          </option>
         ))}
       </Select>
     ) : (

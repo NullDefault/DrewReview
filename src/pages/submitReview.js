@@ -74,32 +74,33 @@ const SubmitReview = () => {
               .
             </chakra.span>
           </chakra.h2>
-          <chakra.a
-            display="inline-flex"
-            alignItems="center"
-            justifyContent="center"
-            px={5}
-            py={3}
-            fontWeight="extrabold"
-            w="full"
-            color="white"
-            bg="transparent"
-            border="5px solid"
-            borderColor="white"
-            _hover={{
-              bg: "white",
-              color: "black",
-            }}
-            style={{
-              textTransform: "uppercase",
-              transition:
-                "background .25s,border .25s,box-shadow .25s,color .25s,transform .25s,-webkit-transform .25s",
-            }}
-            href="mailto:hwells@drew.edu"
-          >
-            Proceed to Form
-            <Icon ml="2" as={RiArrowRightCircleLine} />
-          </chakra.a>
+          <Link href="/reviewForm" passHref>
+            <chakra.a
+              display="inline-flex"
+              alignItems="center"
+              justifyContent="center"
+              px={5}
+              py={3}
+              fontWeight="extrabold"
+              w="full"
+              color="white"
+              bg="transparent"
+              border="5px solid"
+              borderColor="white"
+              _hover={{
+                bg: "white",
+                color: "black",
+              }}
+              style={{
+                textTransform: "uppercase",
+                transition:
+                  "background .25s,border .25s,box-shadow .25s,color .25s,transform .25s,-webkit-transform .25s",
+              }}
+            >
+              Proceed to Form
+              <Icon ml="2" as={RiArrowRightCircleLine} />
+            </chakra.a>
+          </Link>
         </Box>
       </VStack>
       <Box h="2rem" />
